@@ -11,8 +11,10 @@
         tailwind.config = { darkMode: 'class', theme: { extend: { colors: { emergency: { dark: '#09090b', amber: '#f59e0b' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
     </script>
     <script>
-        if (localStorage.getItem('color-theme') === 'light' || (!('color-theme' in localStorage) && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (localStorage.getItem('color-theme') === 'light') {
             document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
         }
     </script>
 </head>
