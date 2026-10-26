@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bg">
+<html lang="bg" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,143 +8,177 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = { theme: { extend: { colors: { emergency: { dark: '#09090b', amber: '#f59e0b' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { emergency: { dark: '#09090b', amber: '#f59e0b' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
+    <script>
+        if (localStorage.getItem('color-theme') === 'light' || (!('color-theme' in localStorage) && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.remove('dark');
+        }
     </script>
 </head>
-<body class="bg-emergency-dark text-slate-100 font-sans pb-24 lg:pb-0">
+<body class="bg-zinc-50 dark:bg-emergency-dark text-zinc-900 dark:text-slate-100 transition-colors duration-300 font-sans pb-24 lg:pb-0">
 
-    <header class="sticky top-0 z-40 bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800">
+    <header class="sticky top-0 z-40 bg-white/95 dark:bg-zinc-100 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3">
                 <div class="w-11 h-11 bg-amber-500 rounded-xl flex items-center justify-center text-zinc-950 font-black text-xl">
                     <i class="fa-solid fa-key"></i>
                 </div>
-                <span class="text-lg font-black tracking-tight text-white uppercase">LOCK <span class="text-amber-500">ME</span></span>
+                <span class="text-lg font-black tracking-tight text-zinc-900 dark:text-white uppercase">LOCK <span class="text-amber-500">ME</span></span>
             </a>
-            <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-zinc-300">
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-zinc-700 dark:text-zinc-300">
                 <a href="index.html" class="hover:text-amber-400">Начало</a>
                 <a href="services.html" class="text-amber-400 font-bold">Услуги</a>
                 <a href="prices.html" class="hover:text-amber-400">Цени</a>
                 <a href="coverage.html" class="hover:text-amber-400">Райони</a>
                 <a href="about.html" class="hover:text-amber-400">За нас</a>
+                <a href="reviews.html" class="hover:text-amber-400 transition">Ревюта</a>
                 <a href="contact.html" class="hover:text-amber-400">Контакт</a>
             </nav>
+            <button onclick="toggleTheme()" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 text-xl transition hidden sm:inline-block mr-4" aria-label="Смяна тема"><i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:inline-block"></i></button>
             <a href="tel:+359877558851" class="hidden sm:flex bg-amber-500 text-zinc-950 px-4 py-2 rounded-xl font-black text-sm">
                 +359 87 755 8851
             </a>
-            <button id="mobile-menu-btn" class="lg:hidden text-zinc-300 hover:text-white text-2xl p-2 focus:outline-none" aria-label="Меню">
+            <button onclick="toggleTheme()" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 text-xl transition mr-4" aria-label="Смяна тема"><i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:inline-block"></i></button>
+            <button id="mobile-menu-btn" class="lg:hidden text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:text-white text-2xl p-2 focus:outline-none" aria-label="Меню">
                 <i class="fa-solid fa-bars" id="menu-icon"></i>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-zinc-900 border-b border-zinc-800 px-4 pt-3 pb-6 space-y-3 text-center font-medium shadow-2xl">
-            <a href="index.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">Начало</a>
-            <a href="services.html" class="block py-2 text-amber-400 font-bold border-b border-zinc-800/50">Услуги</a>
-            <a href="prices.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">Цени в €</a>
-            <a href="coverage.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">Райони</a>
-            <a href="about.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">За нас</a>
-            <a href="contact.html" class="block py-2 text-zinc-300 hover:text-amber-400">Контакт</a>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 px-4 pt-3 pb-6 space-y-3 text-center font-medium shadow-2xl">
+            <a href="index.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Начало</a>
+            <a href="services.html" class="block py-2 text-amber-400 font-bold border-b border-zinc-200 dark:border-zinc-800/50">Услуги</a>
+            <a href="prices.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Цени в €</a>
+            <a href="coverage.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Райони</a>
+            <a href="about.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">За нас</a>
+            <a href="reviews.html" class="hover:text-amber-400 transition">Ревюта</a>
+                <a href="contact.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400">Контакт</a>
         </div>
     </header>
 
     <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <span class="text-amber-500 font-bold text-sm tracking-widest uppercase mb-2 block">Lock Me Специализирани Услуги</span>
-            <h1 class="text-4xl font-black text-white mb-4">Аварийни Ключарски Услуги в София</h1>
-            <p class="text-zinc-400">Всички услуги се извършват от професионални ключари с модерна техника и гаранция за липса на щети.</p>
+            <h1 class="text-4xl font-black text-zinc-900 dark:text-white mb-4">Аварийни Ключарски Услуги в София</h1>
+            <p class="text-zinc-600 dark:text-zinc-400">Всички услуги се извършват от професионални ключари с модерна техника и гаранция за липса на щети.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl flex flex-col justify-between">
+            <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl flex flex-col justify-between">
                 <div>
                     <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-2xl mb-6">
                         <i class="fa-solid fa-door-open"></i>
                     </div>
-                    <h2 class="text-2xl font-bold text-white mb-3">1. Аварийно Отключване на Врати</h2>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mb-3">1. Аварийно Отключване на Врати</h2>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6">
                         Извършваме отключване на захлопнати, заключени или повредени блиндирани, дървени и метални врати. Работим без да увреждаме крилото на вратата или касата.
                     </p>
                 </div>
-                <div class="flex items-center justify-between pt-4 border-t border-zinc-800">
-                    <span class="text-amber-400 font-black text-xl">Цена: от 35 €</span>
-                    <a href="tel:+359877558851" class="px-5 py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs rounded-xl hover:bg-amber-400 transition">Обади се</a>
+                <div class="grid grid-cols-2 gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                    <a href="prices.html" class="py-2.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold text-xs rounded-xl hover:bg-zinc-200 dark:hover:bg-zinc-700 transition flex items-center justify-center space-x-1.5">
+                        <i class="fa-solid fa-euro-sign text-amber-500"></i>
+                        <span>Виж цена</span>
+                    </a>
+                    <a href="tel:+359877558851" class="py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs rounded-xl hover:bg-amber-400 transition flex items-center justify-center space-x-1.5 shadow-sm">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Обади се</span>
+                    </a>
                 </div>
             </div>
 
-            <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl flex flex-col justify-between">
+            <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl flex flex-col justify-between">
                 <div>
                     <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-2xl mb-6">
                         <i class="fa-solid fa-car"></i>
                     </div>
-                    <h2 class="text-2xl font-bold text-white mb-3">2. Автоключар и Отключване на Коли</h2>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mb-3">2. Автоключар и Отключване на Коли</h2>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6">
                         Безаварийно отваряне на автомобили от всички марки при забравен ключ вътре, изгубени ключове или блокирала ключалка.
                     </p>
                 </div>
-                <div class="flex items-center justify-between pt-4 border-t border-zinc-800">
-                    <span class="text-amber-400 font-black text-xl">Цена: от 45 €</span>
-                    <a href="tel:+359877558851" class="px-5 py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs rounded-xl hover:bg-amber-400 transition">Обади се</a>
+                <div class="grid grid-cols-2 gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                    <a href="prices.html" class="py-2.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold text-xs rounded-xl hover:bg-zinc-200 dark:hover:bg-zinc-700 transition flex items-center justify-center space-x-1.5">
+                        <i class="fa-solid fa-euro-sign text-amber-500"></i>
+                        <span>Виж цена</span>
+                    </a>
+                    <a href="tel:+359877558851" class="py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs rounded-xl hover:bg-amber-400 transition flex items-center justify-center space-x-1.5 shadow-sm">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Обади се</span>
+                    </a>
                 </div>
             </div>
 
-            <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl flex flex-col justify-between">
+            <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl flex flex-col justify-between">
                 <div>
                     <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-2xl mb-6">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                     </div>
-                    <h2 class="text-2xl font-bold text-white mb-3">3. Смяна и Ремонт на Брави</h2>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                        Подмяна на патрони, брави с висока степен на защита и ремонт на повредени механизми на място.
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mb-3">3. Смяна и Ремонт на Брати</h2>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6">
+                        Подмяна на патрони, брави с висока степен на защита, монтаж на допълнителни брави и ремонт на повредени механизми на място.
                     </p>
                 </div>
-                <div class="flex items-center justify-between pt-4 border-t border-zinc-800">
-                    <span class="text-amber-400 font-black text-xl">Цена: от 25 €</span>
-                    <a href="tel:+359877558851" class="px-5 py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs rounded-xl hover:bg-amber-400 transition">Обади се</a>
+                <div class="grid grid-cols-2 gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                    <a href="prices.html" class="py-2.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold text-xs rounded-xl hover:bg-zinc-200 dark:hover:bg-zinc-700 transition flex items-center justify-center space-x-1.5">
+                        <i class="fa-solid fa-euro-sign text-amber-500"></i>
+                        <span>Виж цена</span>
+                    </a>
+                    <a href="tel:+359877558851" class="py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs rounded-xl hover:bg-amber-400 transition flex items-center justify-center space-x-1.5 shadow-sm">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Обади се</span>
+                    </a>
                 </div>
             </div>
 
-            <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl flex flex-col justify-between">
+            <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl flex flex-col justify-between">
                 <div>
                     <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-2xl mb-6">
                         <i class="fa-solid fa-key"></i>
                     </div>
-                    <h2 class="text-2xl font-bold text-white mb-3">4. Ключове и Чипове за Вход</h2>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mb-3">4. Ключове и Чипове за Вход</h2>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6">
                         Изваждане на дубликати за секретни патрони, катинари, както и програмиране на електронни чипове за входни врати.
                     </p>
                 </div>
-                <div class="flex items-center justify-between pt-4 border-t border-zinc-800">
-                    <span class="text-amber-400 font-black text-xl">Цена: от 15 €</span>
-                    <a href="tel:+359877558851" class="px-5 py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs rounded-xl hover:bg-amber-400 transition">Обади се</a>
+                <div class="grid grid-cols-2 gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                    <a href="prices.html" class="py-2.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold text-xs rounded-xl hover:bg-zinc-200 dark:hover:bg-zinc-700 transition flex items-center justify-center space-x-1.5">
+                        <i class="fa-solid fa-euro-sign text-amber-500"></i>
+                        <span>Виж цена</span>
+                    </a>
+                    <a href="tel:+359877558851" class="py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs rounded-xl hover:bg-amber-400 transition flex items-center justify-center space-x-1.5 shadow-sm">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Обади се</span>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-zinc-950 border-t border-zinc-800 py-10">
+    <footer class="bg-zinc-100 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-                <p class="text-sm text-zinc-400">&copy; 2026 Lock Me - Денонощен Авариен Ключар София.</p>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400">&copy; 2026 Lock Me - Денонощен Авариен Ключар София.</p>
             </div>
-            <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-zinc-400">
+            <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-zinc-600 dark:text-zinc-400">
                 <a href="index.html" class="hover:text-amber-400">Начало</a>
                 <a href="services.html" class="hover:text-amber-400">Услуги</a>
                 <a href="prices.html" class="hover:text-amber-400">Цени</a>
                 <a href="coverage.html" class="hover:text-amber-400">Райони</a>
                 <a href="about.html" class="hover:text-amber-400">За нас</a>
+                <a href="reviews.html" class="hover:text-amber-400 transition">Ревюта</a>
                 <a href="contact.html" class="hover:text-amber-400">Контакт</a>
             </div>
         </div>
     </footer>
 
     <!-- STICKY MOBILE CTA -->
-    <div class="fixed bottom-0 left-0 right-0 bg-zinc-950/95 border-t border-amber-500/50 p-2.5 z-50 lg:hidden backdrop-blur-md">
+    <div class="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-zinc-100 dark:bg-zinc-950/95 border-t border-amber-500/30 dark:border-amber-500/50 p-2.5 z-50 lg:hidden backdrop-blur-md">
         <div class="grid grid-cols-2 gap-2">
             <a href="tel:+359877558851" class="py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-zinc-950 font-black text-sm rounded-xl flex items-center justify-center space-x-2 shadow-lg">
                 <i class="fa-solid fa-phone"></i>
                 <span>Обади се</span>
             </a>
-            <a href="https://maps.app.goo.gl/Pi85prHvhKNxzH6S6?g_st=ic" target="_blank" rel="noopener noreferrer" class="py-3 bg-zinc-900 border border-amber-500/60 text-white font-bold text-sm rounded-xl flex items-center justify-center space-x-2">
+            <a href="https://maps.app.goo.gl/Pi85prHvhKNxzH6S6?g_st=ic" target="_blank" rel="noopener noreferrer" class="py-3 bg-white dark:bg-zinc-900 border border-amber-500/60 text-zinc-900 dark:text-white font-bold text-sm rounded-xl flex items-center justify-center space-x-2">
                 <i class="fa-solid fa-map-location-dot text-amber-500"></i>
                 <span>Google Maps</span>
             </a>
@@ -155,6 +189,13 @@
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
+    </script>
+
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
     </script>
 </body>
 </html>
