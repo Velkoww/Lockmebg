@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = { 
+            darkMode: 'class', // <--- КРИТИЧНО: Задължително за правилно работеща тъмна тема с Tailwind CDN
             theme: { 
                 extend: { 
                     colors: { emergency: { dark: '#09090b', amber: '#f59e0b' } }, 
@@ -25,6 +26,7 @@
         .animate-pulse-glow { animation: pulse-glow 2s infinite; }
     </style>
     <script>
+        // Проверка и инициализация на темата преди зареждане, за да няма мигане
         if (localStorage.getItem('color-theme') === 'light') {
             document.documentElement.classList.remove('dark');
         } else {
@@ -35,7 +37,7 @@
 <body class="bg-zinc-50 dark:bg-emergency-dark text-zinc-900 dark:text-slate-100 transition-colors duration-300 font-sans pb-24 lg:pb-0">
 
     <!-- HEADER / NAVIGATION -->
-    <header class="sticky top-0 z-40 bg-white/95 dark:bg-zinc-100 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
+    <header class="sticky top-0 z-40 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3 group">
                 <div class="w-11 h-11 bg-amber-500 rounded-xl flex items-center justify-center text-zinc-950 font-black text-xl shadow-lg shadow-amber-500/20 group-hover:bg-amber-400 transition">
@@ -57,15 +59,21 @@
                 <a href="contact.html" class="hover:text-amber-400 transition">Контакт</a>
             </nav>
 
-            <button onclick="toggleTheme()" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 text-xl transition hidden sm:inline-block mr-4" aria-label="Смяна тема"><i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:inline-block"></i></button>
-            <a href="tel:+359877558851" class="hidden sm:flex bg-amber-500 text-zinc-950 px-4 py-2 rounded-xl font-black text-sm">
-                +359 87 755 8851
-            </a>
+            <div class="flex items-center space-x-3">
+                <!-- Единичен, работещ бутон за смяна на темата за всички устройства -->
+                <button onclick="toggleTheme()" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 text-xl transition p-2" aria-label="Смяна тема">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:inline-block"></i>
+                </button>
+                
+                <a href="tel:+359877558851" class="hidden sm:flex bg-amber-500 text-zinc-950 px-4 py-2 rounded-xl font-black text-sm hover:bg-amber-400 transition">
+                    +359 87 755 8851
+                </a>
 
-            <button onclick="toggleTheme()" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 text-xl transition mr-4" aria-label="Смяна тема"><i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:inline-block"></i></button>
-            <button id="mobile-menu-btn" class="lg:hidden text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:text-white text-2xl p-2 focus:outline-none" aria-label="Меню">
-                <i class="fa-solid fa-bars" id="menu-icon"></i>
-            </button>
+                <button id="mobile-menu-btn" class="lg:hidden text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white text-2xl p-2 focus:outline-none" aria-label="Меню">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
         </div>
 
         <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 px-4 pt-3 pb-6 space-y-3 text-center font-medium shadow-2xl">
@@ -76,7 +84,8 @@
             <a href="about.html" class="block py-2 text-amber-400 font-bold border-b border-zinc-200 dark:border-zinc-800/50">За нас</a>
             <a href="reviews.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Ревюта</a>
             <a href="contact.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400">Контакт</a>
-        </div></header>
+        </div>
+    </header>
 
     <!-- MAIN CONTENT -->
     <section class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -91,7 +100,7 @@
 
         <!-- Story & Values Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl">
+            <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl transition-colors">
                 <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl mb-4 font-bold">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
@@ -101,7 +110,7 @@
                 </p>
             </div>
 
-            <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl">
+            <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl transition-colors">
                 <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl mb-4 font-bold">
                     <i class="fa-solid fa-bolt"></i>
                 </div>
@@ -113,7 +122,7 @@
         </div>
 
         <!-- Why Choose Us -->
-        <div class="bg-gradient-to-b from-white to-zinc-100 dark:from-zinc-900 dark:to-zinc-950 border border-amber-500/30 p-8 sm:p-12 rounded-3xl mb-16">
+        <div class="bg-gradient-to-b from-white to-zinc-100 dark:from-zinc-900 dark:to-zinc-950 border border-amber-500/30 p-8 sm:p-12 rounded-3xl mb-16 transition-colors">
             <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-8 text-center">Защо да изберете Lock Me?</h2>
             
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
@@ -136,7 +145,7 @@
         </div>
 
         <!-- CTA Section -->
-        <div class="text-center bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl">
+        <div class="text-center bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl transition-colors">
             <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-2">Имате нужда от ключар веднага?</h3>
             <p class="text-zinc-600 dark:text-zinc-400 text-sm mb-6">Позвънете ни за бърза консултация и изпращане на дежурен майстор.</p>
             <a href="tel:+359877558851" class="inline-flex items-center space-x-3 bg-amber-500 hover:bg-amber-400 text-zinc-950 px-6 py-3.5 rounded-xl font-black text-sm transition">
@@ -165,7 +174,7 @@
     </footer>
 
     <!-- STICKY MOBILE CTA -->
-    <div class="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-zinc-100 dark:bg-zinc-950/95 border-t border-amber-500/30 dark:border-amber-500/50 p-2.5 z-50 lg:hidden backdrop-blur-md">
+    <div class="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-zinc-950/95 border-t border-amber-500/30 dark:border-amber-500/50 p-2.5 z-50 lg:hidden backdrop-blur-md">
         <div class="grid grid-cols-2 gap-2">
             <a href="tel:+359877558851" class="py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-zinc-950 font-black text-sm rounded-xl flex items-center justify-center space-x-2 shadow-lg">
                 <i class="fa-solid fa-phone"></i>
@@ -179,15 +188,19 @@
     </div>
 
     <script>
+        // Мобилно меню
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
-    </script>
 
-    <script>
+        // Функция за превключване и запазване на темата
         function toggleTheme() {
             document.documentElement.classList.toggle('dark');
-            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
         }
     </script>
 </body>
