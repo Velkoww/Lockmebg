@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bg" class="scroll-smooth" class="dark">
+<html lang="bg" class="scroll-smooth dark"> class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +34,13 @@
         }
         .animate-pulse-glow { animation: pulse-glow 2s infinite; }
     </style>
+    <script>
+        if (localStorage.getItem('color-theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
 </head>
 <body class="bg-zinc-50 dark:bg-emergency-dark text-zinc-900 dark:text-slate-100 transition-colors duration-300 font-sans antialiased selection:bg-amber-500 selection:text-black pb-24 lg:pb-0">
 
@@ -55,6 +62,7 @@
                 <a href="prices.html" class="hover:text-amber-400 transition">Цени</a>
                 <a href="coverage.html" class="hover:text-amber-400 transition">Райони</a>
                 <a href="about.html" class="hover:text-amber-400 transition">За нас</a>
+                <a href="reviews.html" class="hover:text-amber-400 transition">Ревюта</a>
                 <a href="contact.html" class="hover:text-amber-400 transition">Контакт</a>
             </nav>
 
@@ -81,9 +89,9 @@
             <a href="prices.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Цени в €</a>
             <a href="coverage.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Райони</a>
             <a href="about.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">За нас</a>
+            <a href="reviews.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Ревюта</a>
             <a href="contact.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400">Контакт</a>
-        </div>
-    </header>
+        </div></header>
 
     <section class="relative pt-12 pb-20 overflow-hidden">
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
