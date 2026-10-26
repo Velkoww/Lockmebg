@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ценоразпис Ключарски Услуги София | Прозрачни Цени в €</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { emergency: { dark: '#09090b', amber: '#f59e0b' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
+</head>
+<body class="bg-emergency-dark text-slate-100 font-sans pb-24 lg:pb-0">
+
+    <header class="sticky top-0 z-40 bg-zinc-950/95 border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-11 h-11 bg-amber-500 rounded-xl flex items-center justify-center text-zinc-950 font-black text-xl">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+                <span class="text-lg font-black text-white uppercase">КЛЮЧАР <span class="text-amber-500">СОФИЯ</span></span>
+            </a>
+            <nav class="hidden lg:flex space-x-6 text-sm font-semibold text-zinc-300">
+                <a href="index.html" class="hover:text-amber-400">Начало</a>
+                <a href="services.html" class="hover:text-amber-400">Услуги</a>
+                <a href="prices.html" class="text-amber-400 font-bold">Цени</a>
+                <a href="coverage.html" class="hover:text-amber-400">Райони</a>
+                <a href="contact.html" class="hover:text-amber-400">Контакт</a>
+            </nav>
+            <button id="mobile-menu-btn" class="lg:hidden text-zinc-300 hover:text-white text-2xl p-2 focus:outline-none" aria-label="Меню">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-zinc-900 border-b border-zinc-800 px-4 pt-3 pb-6 space-y-3 text-center font-medium shadow-2xl">
+            <a href="index.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">Начало</a>
+            <a href="services.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">Услуги</a>
+            <a href="prices.html" class="block py-2 text-amber-400 font-bold border-b border-zinc-800/50">Цени в €</a>
+            <a href="coverage.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">Райони</a>
+            <a href="contact.html" class="block py-2 text-zinc-300 hover:text-amber-400">Контакт</a>
+        </div>
+    </header>
+
+    <section class="py-16 max-w-4xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-black text-white mb-4">Ценоразпис в Евро (€)</h1>
+            <p class="text-zinc-400">Цените са ориентировъчни. Окончателната цена се потвърждава по телефона преди тръгване на екипа.</p>
+        </div>
+
+        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden shadow-xl">
+            <table class="w-full text-left text-sm text-zinc-300">
+                <thead class="bg-zinc-950 text-amber-500 uppercase text-xs font-bold border-b border-zinc-800">
+                    <tr>
+                        <th class="p-4 sm:p-6">Услуга</th>
+                        <th class="p-4 sm:p-6 text-right">Цена (€)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-zinc-800">
+                    <tr>
+                        <td class="p-4 sm:p-6 font-semibold text-white">Аварийно отключване на блиндирана врата</td>
+                        <td class="p-4 sm:p-6 text-right font-black text-amber-400">от 35 €</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 sm:p-6 font-semibold text-white">Отключване на интериорна / дървена врата</td>
+                        <td class="p-4 sm:p-6 text-right font-black text-amber-400">от 30 €</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 sm:p-6 font-semibold text-white">Аварийно отключване на лек автомобил</td>
+                        <td class="p-4 sm:p-6 text-right font-black text-amber-400">от 45 €</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 sm:p-6 font-semibold text-white">Подмяна на секретен патрон / брава</td>
+                        <td class="p-4 sm:p-6 text-right font-black text-amber-400">от 25 €</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 sm:p-6 font-semibold text-white">Изваждане на ключ-дубликат / чип за вход</td>
+                        <td class="p-4 sm:p-6 text-right font-black text-amber-400">от 15 €</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 sm:p-6 font-semibold text-white">Посещение на адрес през нощта (22:00 - 06:00)</td>
+                        <td class="p-4 sm:p-6 text-right font-black text-amber-400">+ 15 €</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

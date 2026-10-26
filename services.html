@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ключарски Услуги София | Денонощна Помощ 24/7</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { emergency: { dark: '#09090b', amber: '#f59e0b' } },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-emergency-dark text-slate-100 font-sans pb-24 lg:pb-0">
+
+    <header class="sticky top-0 z-40 bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-11 h-11 bg-amber-500 rounded-xl flex items-center justify-center text-zinc-950 font-black text-xl">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+                <span class="text-lg font-black tracking-tight text-white uppercase">КЛЮЧАР <span class="text-amber-500">СОФИЯ</span></span>
+            </a>
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-zinc-300">
+                <a href="index.html" class="hover:text-amber-400">Начало</a>
+                <a href="services.html" class="text-amber-400 font-bold">Услуги</a>
+                <a href="prices.html" class="hover:text-amber-400">Цени</a>
+                <a href="coverage.html" class="hover:text-amber-400">Райони</a>
+                <a href="contact.html" class="hover:text-amber-400">Контакт</a>
+            </nav>
+            <a href="tel:+359888123456" class="hidden sm:flex bg-amber-500 text-zinc-950 px-4 py-2 rounded-xl font-black text-sm">
+                088 812 3456
+            </a>
+            <button id="mobile-menu-btn" class="lg:hidden text-zinc-300 hover:text-white text-2xl p-2 focus:outline-none" aria-label="Меню">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-zinc-900 border-b border-zinc-800 px-4 pt-3 pb-6 space-y-3 text-center font-medium shadow-2xl">
+            <a href="index.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">Начало</a>
+            <a href="services.html" class="block py-2 text-amber-400 font-bold border-b border-zinc-800/50">Услуги</a>
+            <a href="prices.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">Цени в €</a>
+            <a href="coverage.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">Райони</a>
+            <a href="contact.html" class="block py-2 text-zinc-300 hover:text-amber-400">Контакт</a>
+        </div>
+    </header>
+
+    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-amber-500 font-bold text-sm tracking-widest uppercase mb-2 block">Специализирани Услуги</span>
+            <h1 class="text-4xl font-black text-white mb-4">Аварийни Ключарски Услуги в София</h1>
+            <p class="text-zinc-400">Всички услуги се извършват от професионални ключари с модерна техника и гаранция за липса на щети.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-door-open"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-3">1. Аварийно Отключване на Врати</h2>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                        Извършваме отключване на захлопнати, заключени или повредени блиндирани, дървени и метални врати. Работим без да увреждаме крилото на вратата или касата.
+                    </p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-zinc-800">
+                    <span class="text-amber-400 font-black text-xl">Цена: от 35 €</span>
+                    <a href="tel:+359888123456" class="px-5 py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs rounded-xl">Обади се</a>
+                </div>
+            </div>
+
+            <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-car"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-3">2. Автоключар и Отключване на Коли</h2>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                        Безаварийно отваряне на автомобили от всички марки при забравен ключ вътре, изгубени ключове или блокирала ключалка.
+                    </p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-zinc-800">
+                    <span class="text-amber-400 font-black text-xl">Цена: от 45 €</span>
+                    <a href="tel:+359888123456" class="px-5 py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs rounded-xl">Обади се</a>
+                </div>
+            </div>
+
+            <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-3">3. Смяна и Ремонт на Брави</h2>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                        Подмяна на патрони, брави с висока степен на защита, монтаж на допълнителни брави и ремонт на повредени механизми на място.
+                    </p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-zinc-800">
+                    <span class="text-amber-400 font-black text-xl">Цена: от 25 €</span>
+                    <a href="tel:+359888123456" class="px-5 py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs rounded-xl">Обади се</a>
+                </div>
+            </div>
+
+            <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-3">4. Ключове и Чипове за Вход</h2>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                        Изваждане на дубликати за секретни патрони, катинари, както и програмиране на електронни чипове за входни врати.
+                    </p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-zinc-800">
+                    <span class="text-amber-400 font-black text-xl">Цена: от 15 €</span>
+                    <a href="tel:+359888123456" class="px-5 py-2.5 bg-amber-500 text-zinc-950 font-bold text-xs rounded-xl">Обади се</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
