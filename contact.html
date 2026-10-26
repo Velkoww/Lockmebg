@@ -66,7 +66,7 @@
                         </div>
                     </a>
 
-                    <a href="viber://chat?number=%2B359877558851" class="flex items-center space-x-4 p-5 bg-zinc-900 border border-purple-500/40 rounded-2xl hover:border-purple-400 transition">
+                    <a href="viber://chat?number=359877558851" class="flex items-center space-x-4 p-5 bg-zinc-900 border border-purple-500/40 rounded-2xl hover:border-purple-400 transition">
                         <div class="w-12 h-12 bg-purple-600 text-white rounded-xl flex items-center justify-center text-xl font-bold">
                             <i class="fa-brands fa-viber"></i>
                         </div>
@@ -96,7 +96,7 @@
                     </div>
                     <div>
                         <h3 class="text-xl font-bold text-white leading-none">Изпратете съобщение във Viber</h3>
-                        <p class="text-xs text-zinc-400 mt-1">Попълнете формата и натиснете бутона — Viber ще се отвори с готови данни.</p>
+                        <p class="text-xs text-zinc-400 mt-1">Попълнете формата и изберете Viber за изпращане.</p>
                     </div>
                 </div>
 
@@ -116,7 +116,7 @@
 
                     <button type="submit" class="w-full py-4 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl transition flex items-center justify-center space-x-3 shadow-lg shadow-purple-600/30 text-base">
                         <i class="fa-brands fa-viber text-xl"></i>
-                        <span>Отвори във Viber с написано съобщение</span>
+                        <span>Изпрати през Viber</span>
                     </button>
                 </form>
             </div>
@@ -147,7 +147,7 @@
                 <i class="fa-solid fa-phone"></i>
                 <span>Обади се</span>
             </a>
-            <a href="viber://chat?number=%2B359877558851" class="py-3 bg-purple-600 text-white font-bold text-sm rounded-xl flex items-center justify-center space-x-2">
+            <a href="viber://chat?number=359877558851" class="py-3 bg-purple-600 text-white font-bold text-sm rounded-xl flex items-center justify-center space-x-2">
                 <i class="fa-brands fa-viber"></i>
                 <span>Viber</span>
             </a>
@@ -159,7 +159,7 @@
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
-        function sendToViber(e) {
+        async function sendToViber(e) {
             e.preventDefault();
             const name = document.getElementById('viber-name').value.trim();
             const phone = document.getElementById('viber-phone').value.trim();
@@ -170,10 +170,19 @@
 Име: ${name}
 Тел: ${phone}
 Запитване: ${msg}`;
-            const encodedText = encodeURIComponent(text);
 
-            // Opens Viber with pre-filled text
-            window.location.href = `viber://send?text=${encodedText}`;
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Запитване към Lock Me',
+                        text: text
+                    });
+                } catch (err) {
+                    window.location.href = 'viber://chat?number=359877558851';
+                }
+            } else {
+                window.location.href = 'viber://chat?number=359877558851';
+            }
         }
     </script>
 </body>
