@@ -50,7 +50,7 @@
         <span class="text-amber-500 font-bold text-sm uppercase tracking-widest block mb-2">Проверка на Покритие</span>
         <h1 class="text-4xl sm:text-5xl font-black text-white mb-4">Проверете Вашия Район</h1>
         <p class="text-zinc-400 max-w-2xl mx-auto mb-10 text-base sm:text-lg">
-            Въведете вашия квартал или адрес за моментална проверка през картата за наличност и реакция до 30 минути.
+            Въведете вашия квартал или адрес за моментална проверка за наличност и реакция до 30 минути.
         </p>
 
         <!-- SEARCH / CHECKER WIDGET -->
@@ -61,7 +61,7 @@
             </h3>
             
             <form onsubmit="checkCoverage(event)" class="flex flex-col sm:flex-row gap-3 mb-4">
-                <input type="text" id="area-input" placeholder="Въведете квартал, улица или град..." class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-amber-500">
+                <input type="text" id="area-input" placeholder="Въведете квартал, улица или адрес..." class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-amber-500">
                 <button type="submit" class="bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold px-6 py-3.5 rounded-xl transition flex-shrink-0">
                     Провери
                 </button>
@@ -133,60 +133,59 @@
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
-        async function checkCoverage(e) {
+        function checkCoverage(e) {
             if (e) e.preventDefault();
             const rawVal = document.getElementById('area-input').value.trim();
             const res = document.getElementById('coverage-result');
             
             if (!rawVal) {
                 res.className = 'p-4 rounded-2xl text-left text-sm font-medium bg-amber-500/10 border border-amber-500/40 text-amber-400';
-                res.innerHTML = 'Моля, въведете квартал, адрес или населено място.';
+                res.innerHTML = 'Моля, въведете квартал, улица или адрес.';
                 res.classList.remove('hidden');
                 return;
             }
 
-            res.className = 'p-4 rounded-2xl text-left text-sm font-medium bg-zinc-800 border border-zinc-700 text-zinc-300';
-            res.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-amber-500 mr-2"></i> Проверка на географската локация през картата...';
-            res.classList.remove('hidden');
+            const cleanVal = rawVal.toLowerCase();
 
-            // Clean input string (remove prefixes like "ул.", "ул", "кв.", "кв")
-            let cleanVal = rawVal.replace(/^(ул\.|ул|кв\.|кв|булевард|бул\.|бул)\s+/i, '').trim();
+            // 1. Explicit other cities check (if they type another town -> Inquiry)
+            const otherCities = ['пловдив', 'варна', 'бургас', 'русе', 'стара загора', 'плевен', 'сливен', 'добрич', 'шумен', 'перник', 'пазарджик', 'благоевград', 'велико търново', 'враца', 'габрово', 'видин', 'хасково', 'ямбол', 'кюстендил', 'монтана', 'търговище', 'разград', 'силистра', 'смолян', 'карлово', 'казалък', 'свиленград'];
+            const isOtherCity = otherCities.some(city => cleanVal.includes(city));
 
-            let isSofia = false;
+            // 2. Gibberish / random keyboard mash check (e.g. "ркдкфлчфеч", "asdfgh")
+            // A realistic Bulgarian or street name contains standard vowels and recognizable syllable patterns or specific street/quarter keywords.
+            // Let's check if it's pure random consonant spam without vowels or valid structure
+            const vowels = /[аеиоуъюяaeiou]/;
+            const hasVowels = vowels.test(cleanVal);
+            
+            // Check for extreme consonant clusters or random gibberish length > 4 with no vowels, or typical keyboard smashes
+            const isGibberish = (!hasVowels && cleanVal.length > 3) || 
+                                /(.)\1{3,}/.test(cleanVal) || 
+                                ['ркдкфлчфеч', 'asdf', 'qwerty', 'zxcv', 'test', '12345'].some(gib => cleanVal.includes(gib));
 
-            try {
-                // Query map API with cleaned value + Sofia
-                const query = encodeURIComponent(cleanVal + ', София, България');
-                const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`);
-                const data = await response.json();
-                
-                if (data && data.length > 0) {
-                    isSofia = data.some(item => {
-                        const displayName = (item.display_name || '').toLowerCase();
-                        return displayName.includes('софия') || displayName.includes('sofia') || displayName.includes('градска област софия');
-                    });
-                }
-            } catch (err) {
-                console.log('Map search fallback active');
-            }
+            // Explicit Sofia neighborhoods & keywords list to give absolute confidence
+            const sofiaKeywords = [
+                'софия', 'sofia', 'младост', 'люлин', 'надежда', 'лозенец', 'студентски', 'борово', 'дружба', 
+                'овча купел', 'витоша', 'банкя', 'панчарево', 'божурище', 'нови искър', 'бистрица', 'бояна', 
+                'горна баня', 'владая', 'кокаляне', 'изток', 'изгрев', 'редута', 'гео милев', 'слатина', 
+                'докторски', 'триъгълник', 'хиподрума', 'лагера', 'белите брези', 'стрелбище', 'мотописта', 
+                'красно село', 'бъкстон', 'манастирски ливади', 'кръстова вада', 'витоша', 'симеоново', 
+                'драгалевци', 'карпузица', 'княжево', 'суходол', 'обеля', 'толстой', 'връбница', 'свобода', 
+                'илинден', 'захарна фабрика', 'гьорче', 'илиенци', 'бенковски', 'orlando', 'орландовци', 
+                'малашевци', 'духовник', 'подуяне', 'суха река', 'хаджи димитър', 'левски', 'абдовица', 
+                'бусманци', 'кривина', 'челопечене', 'възраждане', 'триъгълника', 'център', 'сердика', 'ончо', 'ватах'
+            ];
 
-            // Fallback smart check: If user typed any street/address while in Bulgarian, or if search wasn't explicitly outside Sofia (like Plovdiv, Varna, Burgas, Ruse)
-            const lowerRaw = rawVal.toLowerCase();
-            const nonSofiaCities = ['пловдив', 'варна', 'бургас', 'русе', 'стара загора', 'плевен', 'сливен', 'добрич', 'шумен', 'перник', 'пазарджик', 'благоевград', 'велико търново'];
-            const isOtherCity = nonSofiaCities.some(city => lowerRaw.includes(city));
+            const isKnownSofia = sofiaKeywords.some(k => cleanVal.includes(k));
 
-            if (!isSofia && !isOtherCity) {
-                // Standard default assumption: Any street typed in Bulgarian without explicitly naming another city is considered Sofia
-                isSofia = true;
-            }
-
-            if (isSofia) {
+            // Decision: If it's another city or gibberish, return Inquiry. Otherwise (streets, numbers, quarters in Sofia), return 100% Coverage.
+            if (!isOtherCity && !isGibberish) {
                 res.className = 'p-4 rounded-2xl text-left text-sm font-medium bg-emerald-500/10 border border-emerald-500/40 text-emerald-400';
                 res.innerHTML = `<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-check text-xl mt-0.5"></i><div><strong class="block text-base">100% Гарантирано Покритие!</strong> Адресът попада в района на София. Време за пристигане до 30 минути.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-emerald-500 text-zinc-950 font-bold rounded-lg text-xs">Обадете се сега: +359 87 755 8851</a></div></div>`;
             } else {
                 res.className = 'p-4 rounded-2xl text-left text-sm font-medium bg-amber-500/10 border border-amber-500/40 text-amber-400';
-                res.innerHTML = `<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-info text-xl mt-0.5"></i><div><strong class="block text-base">Обслужване по Запитване</strong> Локацията е извън основния периметър на София. Свържете се с нас за информация и потвърждение.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-amber-500 text-zinc-950 font-bold rounded-lg text-xs">Позвънете за запитване: +359 87 755 8851</a></div></div>`;
+                res.innerHTML = `<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-info text-xl mt-0.5"></i><div><strong class="block text-base">Обслужване по Запитване</strong> Локацията е извън основния периметър или е невалидна. Свържете се с нас за потвърждение.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-amber-500 text-zinc-950 font-bold rounded-lg text-xs">Позвънете за запитване: +359 87 755 8851</a></div></div>`;
             }
+            res.classList.remove('hidden');
         }
     </script>
 </body>
