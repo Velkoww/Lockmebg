@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Райони на Покритие в София | Авариен Ключар до 30 мин</title>
+    <title>Райони на Покритие | Lock Me София</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
@@ -19,15 +19,19 @@
                 <div class="w-11 h-11 bg-amber-500 rounded-xl flex items-center justify-center text-zinc-950 font-black text-xl">
                     <i class="fa-solid fa-key"></i>
                 </div>
-                <span class="text-lg font-black text-white uppercase">КЛЮЧАР <span class="text-amber-500">СОФИЯ</span></span>
+                <span class="text-lg font-black text-white uppercase">LOCK <span class="text-amber-500">ME</span></span>
             </a>
             <nav class="hidden lg:flex space-x-6 text-sm font-semibold text-zinc-300">
                 <a href="index.html" class="hover:text-amber-400">Начало</a>
                 <a href="services.html" class="hover:text-amber-400">Услуги</a>
                 <a href="prices.html" class="hover:text-amber-400">Цени</a>
                 <a href="coverage.html" class="text-amber-400 font-bold">Райони</a>
+                <a href="about.html" class="hover:text-amber-400">За нас</a>
                 <a href="contact.html" class="hover:text-amber-400">Контакт</a>
             </nav>
+            <a href="tel:+359877558851" class="hidden sm:flex bg-amber-500 text-zinc-950 px-4 py-2 rounded-xl font-black text-sm">
+                +359 87 755 8851
+            </a>
             <button id="mobile-menu-btn" class="lg:hidden text-zinc-300 hover:text-white text-2xl p-2 focus:outline-none" aria-label="Меню">
                 <i class="fa-solid fa-bars" id="menu-icon"></i>
             </button>
@@ -37,15 +41,64 @@
             <a href="services.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">Услуги</a>
             <a href="prices.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">Цени в €</a>
             <a href="coverage.html" class="block py-2 text-amber-400 font-bold border-b border-zinc-800/50">Райони</a>
+            <a href="about.html" class="block py-2 text-zinc-300 hover:text-amber-400 border-b border-zinc-800/50">За нас</a>
             <a href="contact.html" class="block py-2 text-zinc-300 hover:text-amber-400">Контакт</a>
         </div>
     </header>
 
     <section class="py-16 max-w-5xl mx-auto px-4 text-center">
-        <h1 class="text-4xl font-black text-white mb-4">Покритие в цяла София</h1>
-        <p class="text-zinc-400 mb-12">Мобилни екипи, позиционирани за светкавична реакция до 30 минути.</p>
+        <span class="text-amber-500 font-bold text-sm uppercase tracking-widest block mb-2">Райони на Покритие</span>
+        <h1 class="text-4xl sm:text-5xl font-black text-white mb-4">Покритие в цяла София и Околността</h1>
+        <p class="text-zinc-400 max-w-2xl mx-auto mb-10 text-base sm:text-lg">
+            Всички квартали на град София и околните населени места са с **100% покритие и пристигане до 30 минути**. Всички останали райони извън София са по предварително запитване.
+        </p>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm">
+        <!-- SEARCH / CHECKER WIDGET -->
+        <div class="bg-zinc-900 border border-amber-500/40 p-6 sm:p-8 rounded-3xl max-w-2xl mx-auto mb-12 shadow-2xl">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-magnifying-glass text-amber-500"></i>
+                <span>Проверка на вашия район</span>
+            </h3>
+            
+            <div class="flex flex-col sm:flex-row gap-3 mb-4">
+                <input type="text" id="area-input" placeholder="Въведете вашия квартал или град..." class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-amber-500">
+                <button onclick="checkCoverage()" class="bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold px-6 py-3.5 rounded-xl transition flex-shrink-0">
+                    Провери
+                </button>
+            </div>
+
+            <!-- RESULT MESSAGE -->
+            <div id="coverage-result" class="hidden p-4 rounded-2xl text-left text-sm font-medium"></div>
+        </div>
+
+        <!-- GOOGLE MAP EMBED / LOCATION LINK -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 mb-12 text-left">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
+                <div>
+                    <h3 class="text-2xl font-bold text-white">Карта на Локацията & Района</h3>
+                    <p class="text-zinc-400 text-sm mt-1">Вижте нашата базова точка в София и бързо упътване през Google Maps.</p>
+                </div>
+                <a href="https://maps.app.goo.gl/Pi85prHvhKNxzH6S6?g_st=ic" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-amber-500 text-zinc-950 font-bold text-sm rounded-xl hover:bg-amber-400 transition flex items-center space-x-2 flex-shrink-0">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>Отвори в Google Maps</span>
+                </a>
+            </div>
+
+            <div class="w-full h-80 rounded-2xl overflow-hidden bg-zinc-950 border border-zinc-800 relative flex items-center justify-center text-center p-6">
+                <div class="space-y-4">
+                    <div class="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-full flex items-center justify-center text-3xl mx-auto">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Lock Me София - Денонощен Екип</h4>
+                    <p class="text-zinc-400 text-sm max-w-md">Нашите екипи са позиционирани в ключови артерии в целия град за незабавна реакция.</p>
+                    <a href="https://maps.app.goo.gl/Pi85prHvhKNxzH6S6?g_st=ic" target="_blank" rel="noopener noreferrer" class="inline-block text-amber-400 underline font-bold text-sm">Към точната локация на картата &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISTRICTS GRID -->
+        <h3 class="text-2xl font-bold text-white mb-6">Покривани райони с реакция до 30 мин</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm mb-12">
             <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl font-bold">Център</div>
             <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl font-bold">Люлин (1-10)</div>
             <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl font-bold">Младост (1-4)</div>
@@ -56,15 +109,78 @@
             <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl font-bold">Манастирски ливади</div>
             <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl font-bold">Дружба (1-2)</div>
             <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl font-bold">Овча купел</div>
-            <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl font-bold">Витоша</div>
+            <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl font-bold">Витоша & Драгалевци</div>
             <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl font-bold">Красно село</div>
+            <div class="p-4 bg-zinc-900 border border-amber-500/30 rounded-2xl font-bold text-amber-400">Банкя</div>
+            <div class="p-4 bg-zinc-900 border border-amber-500/30 rounded-2xl font-bold text-amber-400">Панчарево</div>
+            <div class="p-4 bg-zinc-900 border border-amber-500/30 rounded-2xl font-bold text-amber-400">Божурище</div>
+            <div class="p-4 bg-zinc-900 border border-amber-500/30 rounded-2xl font-bold text-amber-400">Нови Искър</div>
+            <div class="p-4 bg-zinc-900 border border-amber-500/30 rounded-2xl font-bold text-amber-400">Бистрица & Бояна</div>
+            <div class="p-4 bg-zinc-900 border border-amber-500/30 rounded-2xl font-bold text-amber-400">Костинброд</div>
+            <div class="p-4 bg-zinc-900 border border-amber-500/30 rounded-2xl font-bold text-amber-400">Горна Баня</div>
+            <div class="p-4 bg-zinc-900 border border-amber-500/30 rounded-2xl font-bold text-amber-400">Владая & Кокаляне</div>
         </div>
     </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-950 border-t border-zinc-800 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+                <p class="text-sm text-zinc-400">&copy; 2026 Lock Me - Денонощен Авариен Ключар София.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-zinc-400">
+                <a href="index.html" class="hover:text-amber-400">Начало</a>
+                <a href="services.html" class="hover:text-amber-400">Услуги</a>
+                <a href="prices.html" class="hover:text-amber-400">Цени</a>
+                <a href="coverage.html" class="hover:text-amber-400">Райони</a>
+                <a href="about.html" class="hover:text-amber-400">За нас</a>
+                <a href="contact.html" class="hover:text-amber-400">Контакт</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY MOBILE CTA -->
+    <div class="fixed bottom-0 left-0 right-0 bg-zinc-950/95 border-t border-amber-500/50 p-2.5 z-50 lg:hidden backdrop-blur-md">
+        <div class="grid grid-cols-2 gap-2">
+            <a href="tel:+359877558851" class="py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-zinc-950 font-black text-sm rounded-xl flex items-center justify-center space-x-2 shadow-lg">
+                <i class="fa-solid fa-phone"></i>
+                <span>Обади се</span>
+            </a>
+            <a href="https://maps.app.goo.gl/Pi85prHvhKNxzH6S6?g_st=ic" target="_blank" rel="noopener noreferrer" class="py-3 bg-zinc-900 border border-amber-500/60 text-white font-bold text-sm rounded-xl flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-map-location-dot text-amber-500"></i>
+                <span>Google Maps</span>
+            </a>
+        </div>
+    </div>
 
     <script>
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
+
+        function checkCoverage() {
+            const val = document.getElementById('area-input').value.trim().toLowerCase();
+            const res = document.getElementById('coverage-result');
+            res.classList.remove('hidden', 'bg-emerald-500/10', 'border-emerald-500/40', 'text-emerald-400', 'bg-amber-500/10', 'border-amber-500/40', 'text-amber-400');
+            
+            if (!val) {
+                res.className = 'p-4 rounded-2xl text-left text-sm font-medium bg-amber-500/10 border border-amber-500/40 text-amber-400';
+                res.innerHTML = 'Моля, въведете име на квартал или град.';
+                return;
+            }
+
+            const sofiaAreas = ['софия', 'център', 'люлин', 'младост', 'надежда', 'лозенец', 'студентски', 'борово', 'манастирски', 'дружба', 'овча купел', 'витоша', 'драгалевци', 'красно село', 'банкя', 'панчарево', 'божурище', 'нови искър', 'бистрица', 'бояна', 'костинброд', 'горна баня', 'владая', 'кокаляне', 'гео милев', 'изток', 'яворов', 'дървеница', 'илиянци', 'княжево', 'павлово', 'симеоново', 'герман', 'казичене', 'мърчаево', 'връбница', 'хаджи димитър', 'сухата река', 'подуяне', 'орландовци', 'бенковски', 'волуяк', 'кривина', 'бусманци', 'световрачене', 'негован', 'чепинци'];
+
+            const match = sofiaAreas.some(area => val.includes(area) || area.includes(val));
+
+            if (match) {
+                res.className = 'p-4 rounded-2xl text-left text-sm font-medium bg-emerald-500/10 border border-emerald-500/40 text-emerald-400';
+                res.innerHTML = '<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-check text-xl mt-0.5"></i><div><strong class="block text-base">100% Гарантирано Покритие!</strong> Време за пристигане до 30 минути на вашия адрес.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-emerald-500 text-zinc-950 font-bold rounded-lg text-xs">Обадете се сега: +359 87 755 8851</a></div></div>';
+            } else {
+                res.className = 'p-4 rounded-2xl text-left text-sm font-medium bg-amber-500/10 border border-amber-500/40 text-amber-400';
+                res.innerHTML = '<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-info text-xl mt-0.5"></i><div><strong class="block text-base">Обслужване по Запитване</strong> Този район е извън стандартния градски периметър. Свържете се с нас за потвърждение на наличност и време.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-amber-500 text-zinc-950 font-bold rounded-lg text-xs">Позвънете за потвърждение: +359 87 755 8851</a></div></div>';
+            }
+        }
     </script>
 </body>
 </html>
