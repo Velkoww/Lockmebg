@@ -296,37 +296,41 @@
 
 
         async function loadLatestReviews() {
-            const container = document.getElementById('latest-reviews');
-            
-            try {
-                const response = await fetch(SHEETDB_URL);
-                const reviews = await response.json();
-                
-                if (!Array.isArray(reviews) || reviews.length === 0) {
-                    container.innerHTML = '<p class="col-span-3 text-center text-zinc-500 text-sm">Все още няма добавени ревюта.</p>';
-                    return;
-                }
-
-                const latest = reviews.reverse().slice(0, 3);
-
-                container.innerHTML = latest.map(r => `
-                    <div class="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl flex flex-col justify-between shadow-sm hover:border-amber-500/50 transition">
-                        <div>
-                            <div class="flex text-amber-500 mb-3 text-sm">
-                                ${'<i class="fa-solid fa-star"></i>'.repeat(Number(r.rating))}${'<i class="fa-regular fa-star text-zinc-700"></i>'.repeat(5 - Number(r.rating))}
-                            </div>
-                            <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4 font-medium italic">"${r.text}"</p>
-                        </div>
-                        <div class="flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800 pt-3">
-                            <span class="font-bold text-zinc-900 dark:text-white text-sm">${r.name}</span>
-                            <span class="text-xs text-zinc-400">${r.date || ''}</span>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (error) {
-                container.innerHTML = '<p class="col-span-3 text-center text-red-400 text-sm">Грешка при зареждане на ревютата.</p>';
-            }
+    const container = document.getElementById('latest-reviews');
+    if (!container) return;
+    
+    try {
+        const response = await fetch(SHEETDB_URL);
+        const reviews = await response.json();
+        
+        if (!Array.isArray(reviews) || reviews.length === 0) {
+            container.innerHTML = '<p class="col-span-3 text-center text-zinc-500 text-sm">Все още няма добавени ревюта.</p>';
+            return;
         }
+
+        // Взимаме последните 3 ревюта
+        const latest = reviews.reverse().slice(0, 3);
+
+        container.innerHTML = latest.map(r => `
+            <div class="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl flex flex-col justify-between shadow-sm hover:border-amber-500/50 transition">
+                <div>
+                    <div class="flex text-amber-500 mb-3 text-sm">
+                        ${'<i class="fa-solid fa-star"></i>'.repeat(Number(r.rating) || 5)}
+                    </div>
+                    <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4 font-medium italic">"${r.text || ''}"</p>
+                </div>
+                <div class="flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800 pt-3">
+                    <span class="font-bold text-zinc-900 dark:text-white text-sm">${r.name || 'Анонимен'}</span>
+                    <span class="text-xs text-zinc-400">${r.date || ''}</span>
+                </div>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error('Грешка при зареждане:', error);
+        container.innerHTML = '<p class="col-span-3 text-center text-red-400 text-sm">Грешка при зареждане на ревютата.</p>';
+    }
+}
+
         
         document.addEventListener('DOMContentLoaded', loadLatestReviews);
     </script>
