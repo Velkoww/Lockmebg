@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>За Нас | Lock Me - Лицензиран Денонощен Ключар София</title>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K84W9K23');</script>
+    <!-- End Google Tag Manager -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = { 
-            darkMode: 'class', // <--- КРИТИЧНО: Задължително за правилно работеща тъмна тема с Tailwind CDN
+            darkMode: 'class',
             theme: { 
                 extend: { 
                     colors: { emergency: { dark: '#09090b', amber: '#f59e0b' } }, 
@@ -26,7 +33,6 @@
         .animate-pulse-glow { animation: pulse-glow 2s infinite; }
     </style>
     <script>
-        // Проверка и инициализация на темата преди зареждане, за да няма мигане
         if (localStorage.getItem('color-theme') === 'light') {
             document.documentElement.classList.remove('dark');
         } else {
@@ -35,8 +41,11 @@
     </script>
 </head>
 <body class="bg-zinc-50 dark:bg-emergency-dark text-zinc-900 dark:text-slate-100 transition-colors duration-300 font-sans pb-24 lg:pb-0">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K84W9K23"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-    <!-- HEADER / NAVIGATION -->
     <header class="sticky top-0 z-40 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3 group">
@@ -60,7 +69,6 @@
             </nav>
 
             <div class="flex items-center space-x-3">
-                <!-- Единичен, работещ бутон за смяна на темата за всички устройства -->
                 <button onclick="toggleTheme()" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 text-xl transition p-2" aria-label="Смяна тема">
                     <i class="fa-solid fa-moon dark:hidden"></i>
                     <i class="fa-solid fa-sun hidden dark:inline-block"></i>
@@ -87,9 +95,7 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <section class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Hero Header -->
         <div class="text-center max-w-3xl mx-auto mb-16">
             <span class="text-amber-500 font-bold text-sm tracking-widest uppercase mb-2 block">За Lock Me</span>
             <h1 class="text-4xl sm:text-5xl font-black text-zinc-900 dark:text-white mb-6">Надежден Партньор в Спешни Ситуации</h1>
@@ -98,7 +104,6 @@
             </p>
         </div>
 
-        <!-- Story & Values Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl transition-colors">
                 <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl mb-4 font-bold">
@@ -121,7 +126,6 @@
             </div>
         </div>
 
-        <!-- Why Choose Us -->
         <div class="bg-gradient-to-b from-white to-zinc-100 dark:from-zinc-900 dark:to-zinc-950 border border-amber-500/30 p-8 sm:p-12 rounded-3xl mb-16 transition-colors">
             <h2 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-8 text-center">Защо да изберете Lock Me?</h2>
             
@@ -144,7 +148,6 @@
             </div>
         </div>
 
-        <!-- CTA Section -->
         <div class="text-center bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl transition-colors">
             <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-2">Имате нужда от ключар веднага?</h3>
             <p class="text-zinc-600 dark:text-zinc-400 text-sm mb-6">Позвънете ни за бърза консултация и изпращане на дежурен майстор.</p>
@@ -155,7 +158,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="bg-zinc-100 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
@@ -173,7 +175,6 @@
         </div>
     </footer>
 
-    <!-- STICKY MOBILE CTA -->
     <div class="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-zinc-950/95 border-t border-amber-500/30 dark:border-amber-500/50 p-2.5 z-50 lg:hidden backdrop-blur-md">
         <div class="grid grid-cols-2 gap-2">
             <a href="tel:+359877558851" class="py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-zinc-950 font-black text-sm rounded-xl flex items-center justify-center space-x-2 shadow-lg">
@@ -188,12 +189,10 @@
     </div>
 
     <script>
-        // Мобилно меню
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
-        // Функция за превключване и запазване на темата
         function toggleTheme() {
             document.documentElement.classList.toggle('dark');
             if (document.documentElement.classList.contains('dark')) {
