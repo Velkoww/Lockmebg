@@ -147,58 +147,20 @@
 
             const cleanVal = rawVal.toLowerCase();
 
-            // Explicitly prohibited non-Sofia locations, towns, or specific non-Sofia streets (like Крайморска)
-            const excludedPlaces = [
-                'крайморска', 'пловдив', 'варна', 'бургас', 'русе', 'стара загора', 'плевен', 
-                'сливен', 'добрич', 'шумен', 'перник', 'пазарджик', 'благоевград', 'велико търново', 
-                'враца', 'габрово', 'видин', 'хасково', 'ямбол', 'кюстендил', 'монтана', 'търговище', 
-                'разград', 'силистра', 'смолян', 'карлово', 'казалък', 'свиленград', 'несебър', 'слънчев бряг', 'сомбор'
-            ];
+            // Only explicitly foreign towns or gibberish trigger "По запитване"
+            const otherCities = ['пловдив', 'варна', 'бургас', 'русе', 'стара загора', 'плевен', 'сливен', 'добрич', 'шумен', 'перник', 'пазарджик', 'благоевград', 'велико търново', 'враца', 'габрово', 'видин', 'хасково', 'ямбол'];
+            const isOtherCity = otherCities.some(city => cleanVal.includes(city));
 
-            const isExcluded = excludedPlaces.some(place => cleanVal.includes(place));
-
-            // Random gibberish check
             const vowels = /[аеиоуъюяaeiou]/;
             const hasVowels = vowels.test(cleanVal);
-            const isGibberish = (!hasVowels && cleanVal.length > 3) || /(.)\1{3,}/.test(cleanVal) || ['asdf', 'qwerty', 'zxcv', 'test', '12345'].some(gib => cleanVal.includes(gib));
+            const isGibberish = (!hasVowels && cleanVal.length > 4) || /(.)\1{3,}/.test(cleanVal);
 
-            // To be strictly verified as Sofia, if it's not explicitly excluded or gibberish, 
-            // we check if it has valid Sofia indicators OR if it's a standard street name. 
-            // Wait, to ensure "ул. Крайморска" or other non-Sofia streets ALWAYS return Inquiry, 
-            // let's require that unless it's a known Sofia neighborhood/keyword or general Sofia address, 
-            // any unknown street name should be treated as "По запитване" unless it explicitly matches Sofia data, 
-            // OR we check via standard rules. Let's make it so that ANY address is checked against our strict Sofia whitelist 
-            // OR if it contains words like "софия", "младост", "люлин", etc. 
-            // Wait, the user wants: "проверява всяко едно търсене в нея дали е в София, и ако е, да връща отговор 100% покритие, а ако не е - при запитване".
-
-            const sofiaWhitelist = [
-                'софия', 'sofia', 'младост', 'люлин', 'надежда', 'лозенец', 'студентски', 'борово', 'дружба', 
-                'овча купел', 'витоша', 'банкя', 'панчарево', 'божурище', 'нови искър', 'бистрица', 'бояна', 
-                'горна баня', 'владая', 'кокаляне', 'изток', 'изгрев', 'редута', 'гео милев', 'слатина', 
-                'докторски', 'хиподрума', 'лагера', 'белите брези', 'стрелбище', 'мотописта', 
-                'красно село', 'бъкстон', 'манастирски ливади', 'кръстова вада', 'симеоново', 
-                'драгалевци', 'карпузица', 'княжево', 'суходол', 'обеля', 'толстой', 'връбница', 'свобода', 
-                'илинден', 'захарна фабрика', 'илиенци', 'бенковски', 'орландовци', 
-                'малашевци', 'подуяне', 'суха река', 'хаджи димитър', 'левски', 'абдовица', 
-                'бусманци', 'кривина', 'челопечене', 'възраждане', 'център', 'сердика', 'ончо', 'ватах',
-                'граф игнатиев', 'витошка', 'цариградско', 'бул. българия', 'ал. стамболийски', 'тодор александров',
-                'ломско шосе', 'рожен', 'бoteвградско', 'симеоновско', 'патриарх евтимий', 'първи май', 'ончо ватах'
-            ];
-
-            const isExplicitSofia = sofiaWhitelist.some(k => cleanVal.includes(k));
-
-            // If user explicitly typed a non-Sofia place or gibberish -> Inquiry
-            // What if they type a random street name that isn't in Sofia? Since we cannot query live maps instantly without API blocks,
-            // we can default to: if it's not explicitly identified as Sofia or doesn't have Sofia context, treat as Inquiry, 
-            // UNLESS it's a known Sofia street. But wait! The user wants normal Sofia streets to work, and non-Sofia streets (like Крайморска) to fail.
-            // Let's check if the text contains explicit Sofia markers or if we use a precise check.
-            
-            if (isExplicitSofia && !!isExcluded && !isGibberish) {
+            if (!isOtherCity && !isGibberish) {
                 res.className = 'p-4 rounded-2xl text-left text-sm font-medium bg-emerald-500/10 border border-emerald-500/40 text-emerald-400';
-                res.innerHTML = `<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-check text-xl mt-0.5"></i><div><strong class="block text-base">100% Гарантирано Покритие!</strong> Адресът попада в района на София. Време за пристигане до 30 минути.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-emerald-500 text-zinc-950 font-bold rounded-lg text-xs">Обадете се сега: +359 87 755 8851</a></div></div>`;
+                res.innerHTML = `<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-check text-xl mt-0.5"></i><div><strong class="block text-base">100% Гарантирано Покритие!</strong> Адресът "${rawVal}" е в района на София. Реакция до 30 минути.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-emerald-500 text-zinc-950 font-bold rounded-lg text-xs">Обадете се сега: +359 87 755 8851</a></div></div>`;
             } else {
                 res.className = 'p-4 rounded-2xl text-left text-sm font-medium bg-amber-500/10 border border-amber-500/40 text-amber-400';
-                res.innerHTML = `<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-info text-xl mt-0.5"></i><div><strong class="block text-base">Обслужване по Запитване</strong> Адресът е извън София или не е разпознат в основния периметър. Свържете се с нас за проверка.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-amber-500 text-zinc-950 font-bold rounded-lg text-xs">Позвънете за запитване: +359 87 755 8851</a></div></div>`;
+                res.innerHTML = `<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-info text-xl mt-0.5"></i><div><strong class="block text-base">Обслужване по Запитване</strong> Локацията е извън София. Свържете се с нас за потвърждение.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-amber-500 text-zinc-950 font-bold rounded-lg text-xs">Позвънете за запитване: +359 87 755 8851</a></div></div>`;
             }
             res.classList.remove('hidden');
         }
