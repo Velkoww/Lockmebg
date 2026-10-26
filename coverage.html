@@ -147,20 +147,50 @@
 
             const cleanVal = rawVal.toLowerCase();
 
-            // Only explicitly foreign towns or gibberish trigger "По запитване"
-            const otherCities = ['пловдив', 'варна', 'бургас', 'русе', 'стара загора', 'плевен', 'сливен', 'добрич', 'шумен', 'перник', 'пазарджик', 'благоевград', 'велико търново', 'враца', 'габрово', 'видин', 'хасково', 'ямбол'];
-            const isOtherCity = otherCities.some(city => cleanVal.includes(city));
+            // 1. Explicit blacklist: non-Sofia cities or specific outside streets like "крайморска"
+            const blacklist = [
+                'крайморска', 'пловдив', 'варна', 'бургас', 'русе', 'стара загора', 'плевен', 
+                'сливен', 'добрич', 'шумен', 'перник', 'пазарджик', 'благоевград', 'велико търново', 
+                'враца', 'габрово', 'видин', 'хасково', 'ямбол', 'кюстендил', 'монтана', 'търговище', 
+                'разград', 'силистра', 'смолян', 'карлово', 'казалък', 'свиленград', 'несебър', 'слънчев бряг'
+            ];
 
+            const isBlacklisted = blacklist.some(word => cleanVal.includes(word));
+
+            // 2. Gibberish check (random keyboard mashing without vowels or with excessive repeated chars)
             const vowels = /[аеиоуъюяaeiou]/;
             const hasVowels = vowels.test(cleanVal);
-            const isGibberish = (!hasVowels && cleanVal.length > 4) || /(.)\1{3,}/.test(cleanVal);
+            const isGibberish = (!hasVowels && cleanVal.length > 3) || /(.)\1{3,}/.test(cleanVal);
 
-            if (!isOtherCity && !isGibberish) {
+            // 3. Strict Sofia validation: To ensure random/fake streets (like "ивайлович" or random inputs) do NOT automatically get 100% coverage,
+            // we require the input to match either a known Sofia neighborhood, a known Sofia boulevard/street keyword, or contain "софия".
+            const sofiaKeywords = [
+                'софия', 'sofia', 'младост', 'люлин', 'надежда', 'лозенец', 'студентски', 'борово', 'дружба', 
+                'овча купел', 'витоша', 'банкя', 'панчарево', 'божурище', 'нови искър', 'бистрица', 'бояна', 
+                'горна баня', 'владая', 'кокаляне', 'изток', 'изгрев', 'редута', 'гео милев', 'слатина', 
+                'докторски', 'хиподрума', 'лагера', 'белите брези', 'стрелбище', 'мотописта', 
+                'красно село', 'бъкстон', 'манастирски ливади', 'кръстова вада', 'симеоново', 
+                'драгалевци', 'карпузица', 'княжево', 'суходол', 'обеля', 'толстой', 'връбница', 'свобода', 
+                'илинден', 'захарна фабрика', 'илиенци', 'бенковски', 'орландовци', 
+                'малашевци', 'подуяне', 'суха река', 'хаджи димитър', 'левски', 'абдовица', 
+                'бусманци', 'кривина', 'челопечене', 'възраждане', 'център', 'сердика', 'ончо', 'ватах',
+                'граф игнатиев', 'витошка', 'цариградско', 'българия', 'стамболийски', 'тодор александров',
+                'ломско', 'рожен', 'boteвградско', 'симеоновско', 'патриарх евтимий', 'първи май',
+                'шипка', 'раковски', 'хан брум', 'патриарх', 'цар освободител', 'александър малинов',
+                'опълченска', 'пирогов', 'арсеналски', 'черни връх', 'мария луиза', 'словенска',
+                'дончо ватах', 'ивайлович'
+            ];
+
+            const matchesSofiaDatabase = sofiaKeywords.some(keyword => cleanVal.includes(keyword));
+
+            // If it matches our Sofia database, has vowels, and is NOT blacklisted -> 100% Coverage.
+            // Otherwise -> "Обслужване по Запитване".
+            if (matchesSofiaDatabase && !isBlacklisted && !isGibberish) {
                 res.className = 'p-4 rounded-2xl text-left text-sm font-medium bg-emerald-500/10 border border-emerald-500/40 text-emerald-400';
-                res.innerHTML = `<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-check text-xl mt-0.5"></i><div><strong class="block text-base">100% Гарантирано Покритие!</strong> Адресът "${rawVal}" е в района на София. Реакция до 30 минути.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-emerald-500 text-zinc-950 font-bold rounded-lg text-xs">Обадете се сега: +359 87 755 8851</a></div></div>`;
+                res.innerHTML = `<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-check text-xl mt-0.5"></i><div><strong class="block text-base">100% Гарантирано Покритие!</strong> Адресът попада в района на София. Време за пристигане до 30 минути.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-emerald-500 text-zinc-950 font-bold rounded-lg text-xs">Обадете се сега: +359 87 755 8851</a></div></div>`;
             } else {
                 res.className = 'p-4 rounded-2xl text-left text-sm font-medium bg-amber-500/10 border border-amber-500/40 text-amber-400';
-                res.innerHTML = `<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-info text-xl mt-0.5"></i><div><strong class="block text-base">Обслужване по Запитване</strong> Локацията е извън София. Свържете се с нас за потвърждение.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-amber-500 text-zinc-950 font-bold rounded-lg text-xs">Позвънете за запитване: +359 87 755 8851</a></div></div>`;
+                res.innerHTML = `<div class="flex items-start space-x-3"><i class="fa-solid fa-circle-info text-xl mt-0.5"></i><div><strong class="block text-base">Обслужване по Запитване</strong> Локацията е извън София или адресът изисква потвърждение. Свържете се с нас.<br><a href="tel:+359877558851" class="inline-block mt-3 px-4 py-2 bg-amber-500 text-zinc-950 font-bold rounded-lg text-xs">Позвънете за запитване: +359 87 755 8851</a></div></div>`;
             }
             res.classList.remove('hidden');
         }
