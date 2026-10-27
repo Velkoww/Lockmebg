@@ -1,51 +1,25 @@
 <!DOCTYPE html>
 <html lang="bg" class="dark">
 <head>
-    <!-- Google Tag Manager -->
+
+<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-K84W9K23');</script>
     <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <title>Цени | Lock Me - Денонощен Ключар София</title>
+    <title>Ценоразпис | Lock Me - Денонощен Ключар София</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        emergency: {
-                            amber: '#f59e0b',
-                            amberHover: '#d97706',
-                            red: '#ef4444',
-                            dark: '#09090b',
-                            card: '#18181b',
-                            border: '#27272a'
-                        }
-                    },
-                    fontFamily: { sans: ['Inter', 'sans-serif'] }
-                }
-            }
-        }
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { emergency: { dark: '#09090b', amber: '#f59e0b' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
     </script>
-    <style>
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.4), 0 0 30px rgba(245, 158, 11, 0.2); }
-            50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.9), 0 0 50px rgba(245, 158, 11, 0.5); }
-        }
-        .animate-pulse-glow { animation: pulse-glow 2s infinite; }
-    </style>
     <script>
-        // Immediately set theme before render to prevent flash
         if (localStorage.getItem('color-theme') === 'light') {
             document.documentElement.classList.remove('dark');
         } else {
@@ -53,22 +27,23 @@
         }
     </script>
 </head>
-<body class="bg-zinc-50 dark:bg-emergency-dark text-zinc-900 dark:text-slate-100 transition-colors duration-300 font-sans antialiased selection:bg-amber-500 selection:text-black pb-24 lg:pb-0 min-h-screen flex flex-col justify-between">
+<body class="bg-zinc-50 dark:bg-emergency-dark text-zinc-900 dark:text-slate-100 transition-colors duration-300 font-sans pb-24 lg:pb-0">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K84W9K23"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <header class="sticky top-0 z-40 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3 group">
-                <img src="logo.png" alt="Lock Me" width="48" height="48" class="w-12 h-12 object-contain drop-shadow-[0_0_10px_rgba(245,158,11,0.35)] group-hover:scale-105 transition">
+                <div class="w-11 h-11 bg-amber-500 rounded-xl flex items-center justify-center text-zinc-950 font-black text-xl shadow-lg shadow-amber-500/20 group-hover:bg-amber-400 transition">
+                    <i class="fa-solid fa-key"></i>
+                </div>
                 <div>
                     <span class="text-lg font-black tracking-tight text-zinc-900 dark:text-white block uppercase leading-none">LOCK <span class="text-amber-500">ME</span></span>
                     <span class="text-xs text-zinc-600 dark:text-zinc-400 block tracking-widest uppercase font-semibold mt-1">Денонощни Ключарски Услуги</span>
                 </div>
             </a>
-
             <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-zinc-700 dark:text-zinc-300">
                 <a href="index.html" class="hover:text-amber-400 transition">Начало</a>
                 <a href="services.html" class="hover:text-amber-400 transition">Услуги</a>
@@ -76,96 +51,326 @@
                 <a href="coverage.html" class="hover:text-amber-400 transition">Райони</a>
                 <a href="about.html" class="hover:text-amber-400 transition">За нас</a>
                 <a href="reviews.html" class="hover:text-amber-400 transition">Ревюта</a>
-                <a href="gallery.html" class="hover:text-amber-400 transition">Галерия</a>
                 <a href="contact.html" class="hover:text-amber-400 transition">Контакт</a>
             </nav>
 
             <div class="flex items-center space-x-3">
-                <a href="https://maps.app.goo.gl/Pi85prHvhKNxzH6S6?g_st=ic" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center space-x-2 bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 hover:border-amber-500 px-3 py-2 rounded-xl transition text-xs font-bold text-zinc-700 dark:text-zinc-300">
-                    <i class="fa-solid fa-location-dot text-amber-500"></i>
-                    <span>Google Maps</span>
+                <button onclick="toggleTheme()" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 text-xl transition p-2" aria-label="Смяна тема"><i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:inline-block"></i></button>
+                <a href="tel:+359877558851" class="hidden sm:flex bg-amber-500 text-zinc-950 px-4 py-2 rounded-xl font-black text-sm hover:bg-amber-400 transition">
+                    +359 87 755 8851
                 </a>
-                <a href="tel:+359877558851" class="hidden sm:flex items-center space-x-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-zinc-950 px-4 py-2 rounded-xl transition font-black text-sm shadow-md">
-                    <i class="fa-solid fa-phone"></i>
-                    <span>+359 87 755 8851</span>
-                </a>
-
-                <button onclick="toggleTheme()" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 text-xl transition p-2 focus:outline-none" aria-label="Смяна тема">
-                    <i class="fa-solid fa-moon dark:hidden"></i>
-                    <i class="fa-solid fa-sun hidden dark:inline-block"></i>
-                </button>
-
-                <button id="mobile-menu-btn" class="lg:hidden text-zinc-700 dark:text-zinc-300 hover:text-amber-500 text-2xl p-2 focus:outline-none" aria-label="Меню">
+                <button id="mobile-menu-btn" class="lg:hidden text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:text-white text-2xl p-2 focus:outline-none" aria-label="Меню">
                     <i class="fa-solid fa-bars" id="menu-icon"></i>
                 </button>
             </div>
         </div>
-
-        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 px-4 pt-3 pb-6 space-y-2 text-center font-medium shadow-2xl">
-            <a href="index.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Начало</a>
-            <a href="services.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Услуги</a>
-            <a href="prices.html" class="block py-2.5 text-amber-400 font-bold border-b border-zinc-200 dark:border-zinc-800/50">Цени в €</a>
-            <a href="coverage.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Райони</a>
-            <a href="about.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">За нас</a>
-            <a href="reviews.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Ревюта</a>
-            <a href="gallery.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Галерия</a>
-            <a href="contact.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400">Контакт</a>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 px-4 pt-3 pb-6 space-y-3 text-center font-medium shadow-2xl">
+            <a href="index.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Начало</a>
+            <a href="services.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Услуги</a>
+            <a href="prices.html" class="block py-2 text-amber-400 font-bold border-b border-zinc-200 dark:border-zinc-800/50">Цени в €</a>
+            <a href="coverage.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Райони</a>
+            <a href="about.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">За нас</a>
+            <a href="reviews.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Ревюта</a>
+            <a href="contact.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400">Контакт</a>
         </div>
     </header>
 
-    <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <section class="py-16 max-w-4xl mx-auto px-4">
         <div class="text-center mb-12">
-            <span class="text-amber-500 font-bold text-sm tracking-widest uppercase mb-2 block">Прозрачно Ценообразуване</span>
-            <h1 class="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white mb-4">Цени на Услугите (в Евро)</h1>
-            <p class="text-zinc-600 dark:text-zinc-400">Фиксирани цени без скрити такси. За точна оферта се свържете с нас.</p>
+            <h1 class="text-4xl font-black text-zinc-900 dark:text-white mb-4">Ценоразпис на Lock Me (€)</h1>
+            <p class="text-zinc-600 dark:text-zinc-400">Цените са ориентировъчни. Окончателната цена се потвърждава по телефона преди тръгване на екипа.</p>
         </div>
 
-        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-sm">
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-zinc-100 dark:bg-zinc-800/80 text-zinc-900 dark:text-white text-sm">
-                            <th class="py-4 px-6 font-bold border-b border-zinc-200 dark:border-zinc-700">Услуга</th>
-                            <th class="py-4 px-6 font-bold border-b border-zinc-200 dark:border-zinc-700 text-right">Цена (€)</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-zinc-700 dark:text-zinc-300 text-sm">
-                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition">
-                            <td class="py-4 px-6 border-b border-zinc-200 dark:border-zinc-800">Посещение на адрес в рамките на София</td>
-                            <td class="py-4 px-6 border-b border-zinc-200 dark:border-zinc-800 text-right font-bold text-amber-500">20 €</td>
-                        </tr>
-                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition">
-                            <td class="py-4 px-6 border-b border-zinc-200 dark:border-zinc-800">Отключване на стандартна дървена/метална врата</td>
-                            <td class="py-4 px-6 border-b border-zinc-200 dark:border-zinc-800 text-right font-bold text-amber-500">от 30 €</td>
-                        </tr>
-                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition">
-                            <td class="py-4 px-6 border-b border-zinc-200 dark:border-zinc-800">Отключване на блиндирана врата</td>
-                            <td class="py-4 px-6 border-b border-zinc-200 dark:border-zinc-800 text-right font-bold text-amber-500">от 40 €</td>
-                        </tr>
-                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition">
-                            <td class="py-4 px-6 border-b border-zinc-200 dark:border-zinc-800">Аварийно отключване на автомобил</td>
-                            <td class="py-4 px-6 border-b border-zinc-200 dark:border-zinc-800 text-right font-bold text-amber-500">от 45 €</td>
-                        </tr>
-                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition">
-                            <td class="py-4 px-6 border-b border-zinc-200 dark:border-zinc-800">Смяна на секретен патрон (без цената на патрона)</td>
-                            <td class="py-4 px-6 border-b border-zinc-200 dark:border-zinc-800 text-right font-bold text-amber-500">от 25 €</td>
-                        </tr>
-                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition">
-                            <td class="py-4 px-6">Изработка на автоключ с чип</td>
-                            <td class="py-4 px-6 text-right font-bold text-amber-500">от 70 €</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="bg-amber-500/10 p-6 text-center border-t border-amber-500/20">
-                <p class="text-xs text-zinc-600 dark:text-zinc-400">
-                    * Посочените цени са ориентировъчни. Окончателната цена се формира след оглед на място в зависимост от сложността. Всички цени са в Евро (€).
-                </p>
-            </div>
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-xl mb-12">
+            <details class="group">
+                <summary class="flex items-center justify-between cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden p-4 sm:p-6 bg-zinc-100 dark:bg-zinc-950 text-amber-500 uppercase text-sm font-bold">
+                    <span>Услуги</span>
+                    <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open:rotate-180"></i>
+                </summary>
+                <div class="divide-y divide-zinc-200 dark:divide-zinc-800 text-sm text-zinc-700 dark:text-zinc-300 border-t border-zinc-200 dark:border-zinc-800">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Аварийно отключване на патрон нисък клас</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">40 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Блиндирана врата с патрон среден клас</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 65 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Патрон висок клас на сигурност</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 90 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Касова брава малка перка</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 60 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Касова брава средна перка</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 75 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Касова брава голяма перка</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 90 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Аварийно отключване на автомобил</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 60 - 80 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Подмяна на патрон/брава</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 40 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Сейф-каса</span>
+                        <span class="text-sm sm:text-right font-bold text-amber-400 sm:max-w-xs">Цената се определя според вида на ключалката, броя ключалки и тяхната сложност</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Посещение в работно време</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 20 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Посещение извън работно време</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 30 €</span>
+                    </div>
+                </div>
+                <div class="p-4 sm:p-6 border-t border-zinc-200 dark:border-zinc-800 text-sm font-semibold text-red-500 space-y-1">
+                    <p>*Всички цени са ориентировъчни и подлежат на доизясняване</p>
+                    <p>**Цени неупоменати в ценоразписа се определят според вида и сложността на отключване</p>
+                </div>
+            </details>
+            <details class="group/keys border-t border-zinc-200 dark:border-zinc-800">
+                <summary class="flex items-center justify-between cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden p-4 sm:p-6 bg-zinc-100 dark:bg-zinc-950 text-amber-500 uppercase text-sm font-bold">
+                    <span>Изработка на ключове</span>
+                    <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open/keys:rotate-180"></i>
+                </summary>
+                <div class="divide-y divide-zinc-200 dark:divide-zinc-800 text-sm text-zinc-700 dark:text-zinc-300 border-t border-zinc-200 dark:border-zinc-800">
+                    <details class="group/sub">
+                        <summary class="flex items-center justify-between gap-3 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden px-4 py-4 sm:px-6 font-bold text-zinc-900 dark:text-white hover:text-amber-500 transition">
+                            <span class="min-w-0">Секретни ключове</span>
+                            <i class="fa-solid fa-chevron-down text-amber-500 text-xs transition-transform duration-300 group-open/sub:rotate-180"></i>
+                        </summary>
+                        <div class="divide-y divide-zinc-200 dark:divide-zinc-800 bg-zinc-50 dark:bg-zinc-950/50 border-t border-zinc-200 dark:border-zinc-800">
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Обикновен секретен ключ – 5 позиции</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">3.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Обикновен секретен ключ – 6 позиции /Кале и др./</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">3.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Секретен ключ за вносна брава /Фаб., руски и др./</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">4.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Декаба Фамилия</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">7.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Двустранен ключ за руска брава</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">6.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Секретни ключове – удължени модели /Декаба, Сонико, Гард и др./</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">6.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Секретни ключове за шкафове</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">4.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Обикновени полусекретни ключове /битови 1-6/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">4.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Обикновен секретен ключ /различни цветове/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">4.00 €</span>
+                            </div>
+                        </div>
+                    </details>
+                    <details class="group/sub">
+                        <summary class="flex items-center justify-between gap-3 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden px-4 py-4 sm:px-6 font-bold text-zinc-900 dark:text-white hover:text-amber-500 transition">
+                            <span class="min-w-0">Специални ключове /ямкови, туболарни, Аблой/</span>
+                            <i class="fa-solid fa-chevron-down text-amber-500 text-xs transition-transform duration-300 group-open/sub:rotate-180"></i>
+                        </summary>
+                        <div class="divide-y divide-zinc-200 dark:divide-zinc-800 bg-zinc-50 dark:bg-zinc-950/50 border-t border-zinc-200 dark:border-zinc-800">
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Ямков ключ /Кодкей, Локсис/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">8.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Ямков ключ /Декаба, Метал/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">10.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Ямков ключ /Кале/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">10.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Ямков ключ /Декаба Милениум/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">10.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Ямков ключ /Дом, Каба, Кесо, Исео, Тарони, Теса и др./</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">15.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Мултилок</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">15.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Туболарни ключове</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">20.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Аблой /руско производство/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">10.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Аблой /китайско производство/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">10.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Аблой /западно производство/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">15.00 €</span>
+                            </div>
+                        </div>
+                    </details>
+                    <details class="group/sub">
+                        <summary class="flex items-center justify-between gap-3 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden px-4 py-4 sm:px-6 font-bold text-zinc-900 dark:text-white hover:text-amber-500 transition">
+                            <span class="min-w-0">Касови, помпови и сейфови ключове</span>
+                            <i class="fa-solid fa-chevron-down text-amber-500 text-xs transition-transform duration-300 group-open/sub:rotate-180"></i>
+                        </summary>
+                        <div class="divide-y divide-zinc-200 dark:divide-zinc-800 bg-zinc-50 dark:bg-zinc-950/50 border-t border-zinc-200 dark:border-zinc-800">
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Акарсан</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">10.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Елзет, Полски, Саб, Метал, Секюрем /малки перки/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">10.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Декаба, Мауер, Кале</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">10.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Касови ключове /малка перка/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">10.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Касови ключове /средна перка/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">13.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Касови ключове /голяма перка/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">15.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Касови ключове – сгъваеми модели</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">25.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Сейфови ключове – едностранни модели</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">25.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Сейфови ключове – двустранни модели</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">30.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Ключове от тип помпа</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">25.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Кръстати ключове</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">8.00 €</span>
+                            </div>
+                        </div>
+                    </details>
+                    <details class="group/sub">
+                        <summary class="flex items-center justify-between gap-3 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden px-4 py-4 sm:px-6 font-bold text-zinc-900 dark:text-white hover:text-amber-500 transition">
+                            <span class="min-w-0">Автомобилни ключове</span>
+                            <i class="fa-solid fa-chevron-down text-amber-500 text-xs transition-transform duration-300 group-open/sub:rotate-180"></i>
+                        </summary>
+                        <div class="divide-y divide-zinc-200 dark:divide-zinc-800 bg-zinc-50 dark:bg-zinc-950/50 border-t border-zinc-200 dark:border-zinc-800">
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Авто – обикновен без пластмасова глава</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">10.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Авто – обикновен с пластмасова глава</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">15.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Авто – специални ключове</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">20.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Авто – ключ за Форд пирон или перка</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">20.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Авто – ключове с транспондер /фиксиран код/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">70.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Авто – ключове с транспондер /крипто код/</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">110.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Авто – ключове с електронна глава</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">130.00 €</span>
+                            </div>
+                        </div>
+                    </details>
+                    <details class="group/sub">
+                        <summary class="flex items-center justify-between gap-3 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden px-4 py-4 sm:px-6 font-bold text-zinc-900 dark:text-white hover:text-amber-500 transition">
+                            <span class="min-w-0">Допълнителни услуги</span>
+                            <i class="fa-solid fa-chevron-down text-amber-500 text-xs transition-transform duration-300 group-open/sub:rotate-180"></i>
+                        </summary>
+                        <div class="divide-y divide-zinc-200 dark:divide-zinc-800 bg-zinc-50 dark:bg-zinc-950/50 border-t border-zinc-200 dark:border-zinc-800">
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Посещение на място за София</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">20.00 €</span>
+                            </div>
+                        </div>
+                    </details>
+                    <details class="group/sub">
+                        <summary class="flex items-center justify-between gap-3 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden px-4 py-4 sm:px-6 font-bold text-zinc-900 dark:text-white hover:text-amber-500 transition">
+                            <span class="min-w-0">Отстъпки при изработка на обикновени секретни ключове по-големи бройки / секретни ключове с 5 позиции</span>
+                            <i class="fa-solid fa-chevron-down text-amber-500 text-xs transition-transform duration-300 group-open/sub:rotate-180"></i>
+                        </summary>
+                        <div class="divide-y divide-zinc-200 dark:divide-zinc-800 bg-zinc-50 dark:bg-zinc-950/50 border-t border-zinc-200 dark:border-zinc-800">
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">От 30 до 50 броя ключове – цена за брой</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">3.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">От 50 до 80 броя ключове – цена за брой</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">3.00 €</span>
+                            </div>
+                            <div class="flex flex-row items-start justify-between gap-4 py-3 pl-6 pr-4 sm:pl-10 sm:pr-6">
+                                <span class="font-semibold text-zinc-900 dark:text-white min-w-0">Над 80 броя ключове – цена за брой</span>
+                                <span class="text-right font-black text-amber-400 whitespace-nowrap">3.00 €</span>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </details>
+        </div>
+
+        <div class="text-center bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl">
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-2">Нуждаете се от точна оферта?</h3>
+            <p class="text-zinc-600 dark:text-zinc-400 text-sm mb-6">Обадете ни се, за да ни опишете проблема си и ще ви дадем точна цена веднага.</p>
+            <a href="tel:+359877558851" class="inline-flex items-center space-x-3 bg-amber-500 hover:bg-amber-400 text-zinc-950 px-6 py-3.5 rounded-xl font-black text-sm transition">
+                <i class="fa-solid fa-phone"></i>
+                <span>+359 87 755 8851</span>
+            </a>
         </div>
     </section>
 
-    <footer class="bg-zinc-100 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 py-10 mt-16">
+    <footer class="bg-zinc-100 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
                 <p class="text-sm text-zinc-600 dark:text-zinc-400">&copy; 2026 Lock Me - Денонощен Авариен Ключар София.</p>
@@ -176,17 +381,15 @@
                 <a href="prices.html" class="hover:text-amber-400">Цени</a>
                 <a href="coverage.html" class="hover:text-amber-400">Райони</a>
                 <a href="about.html" class="hover:text-amber-400">За нас</a>
-                <a href="reviews.html" class="hover:text-amber-400">Ревюта</a>
-                <a href="gallery.html" class="hover:text-amber-400">Галерия</a>
+                <a href="reviews.html" class="hover:text-amber-400 transition">Ревюта</a>
                 <a href="contact.html" class="hover:text-amber-400">Контакт</a>
             </div>
         </div>
     </footer>
 
-    <!-- STICKY MOBILE CTA -->
     <div class="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-zinc-950/95 border-t border-amber-500/30 dark:border-amber-500/50 p-2.5 z-50 lg:hidden backdrop-blur-md">
         <div class="grid grid-cols-2 gap-2">
-            <a href="tel:+359877558851" class="py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-zinc-950 font-black text-sm rounded-xl flex items-center justify-center space-x-2 shadow-lg animate-pulse-glow">
+            <a href="tel:+359877558851" class="py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-zinc-950 font-black text-sm rounded-xl flex items-center justify-center space-x-2 shadow-lg">
                 <i class="fa-solid fa-phone"></i>
                 <span>Обади се</span>
             </a>
@@ -198,23 +401,16 @@
     </div>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
 
-        // Theme Toggle
         function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
             if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('color-theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
                 localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
             }
         }
     </script>
