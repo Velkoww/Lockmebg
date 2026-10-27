@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="bg" class="dark">
-<head>\n    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-K84W9K23');</script>
-<!-- End Google Tag Manager -->
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K84W9K23');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
@@ -17,16 +18,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { emergency: { dark: '#09090b', amber: '#f59e0b' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        emergency: {
+                            amber: '#f59e0b',
+                            amberHover: '#d97706',
+                            red: '#ef4444',
+                            dark: '#09090b',
+                            card: '#18181b',
+                            border: '#27272a'
+                        }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
     </script>
+    <style>
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.4), 0 0 30px rgba(245, 158, 11, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.9), 0 0 50px rgba(245, 158, 11, 0.5); }
+        }
+        .animate-pulse-glow { animation: pulse-glow 2s infinite; }
+    </style>
     <script>
-        if (localStorage.getItem('color-theme') === 'light') { document.documentElement.classList.remove('dark'); } else { document.documentElement.classList.add('dark'); }
+        // Immediately set theme before render to prevent flash
+        if (localStorage.getItem('color-theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+        }
     </script>
 </head>
-\1\n    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K84W9K23"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<body class="bg-zinc-50 dark:bg-emergency-dark text-zinc-900 dark:text-slate-100 transition-colors duration-300 font-sans antialiased selection:bg-amber-500 selection:text-black pb-24 lg:pb-0 min-h-screen flex flex-col justify-between">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K84W9K23"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <header class="sticky top-0 z-40 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3 group">
@@ -36,6 +68,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <span class="text-xs text-zinc-600 dark:text-zinc-400 block tracking-widest uppercase font-semibold mt-1">Денонощни Ключарски Услуги</span>
                 </div>
             </a>
+
             <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-zinc-700 dark:text-zinc-300">
                 <a href="index.html" class="hover:text-amber-400 transition">Начало</a>
                 <a href="services.html" class="hover:text-amber-400 transition">Услуги</a>
@@ -43,29 +76,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="coverage.html" class="hover:text-amber-400 transition">Райони</a>
                 <a href="about.html" class="hover:text-amber-400 transition">За нас</a>
                 <a href="reviews.html" class="text-amber-400 font-bold transition">Ревюта</a>
-                <a href="gallery.html" class="hover:text-amber-400 transition">Галерия</a>\n                <a href="contact.html" class="hover:text-amber-400 transition">Контакт</a>
+                <a href="gallery.html" class="hover:text-amber-400 transition">Галерия</a>
+                <a href="contact.html" class="hover:text-amber-400 transition">Контакт</a>
             </nav>
+
             <div class="flex items-center space-x-3">
-                <button onclick="toggleTheme()" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 text-xl transition p-2" aria-label="Смяна тема"><i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:inline-block"></i></button>
-                <a href="tel:+359877558851" class="hidden sm:flex bg-amber-500 text-zinc-950 px-4 py-2 rounded-xl font-black text-sm hover:bg-amber-400 transition">+359 87 755 8851</a>
-                <button id="mobile-menu-btn" class="lg:hidden text-zinc-700 dark:text-zinc-300 hover:text-white text-2xl p-2 focus:outline-none"><i class="fa-solid fa-bars" id="menu-icon"></i></button>
+                <a href="https://maps.app.goo.gl/Pi85prHvhKNxzH6S6?g_st=ic" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center space-x-2 bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 hover:border-amber-500 px-3 py-2 rounded-xl transition text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                    <i class="fa-solid fa-location-dot text-amber-500"></i>
+                    <span>Google Maps</span>
+                </a>
+                <a href="tel:+359877558851" class="hidden sm:flex items-center space-x-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-zinc-950 px-4 py-2 rounded-xl transition font-black text-sm shadow-md">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+359 87 755 8851</span>
+                </a>
+
+                <button onclick="toggleTheme()" class="text-zinc-500 dark:text-zinc-400 hover:text-amber-500 text-xl transition p-2 focus:outline-none" aria-label="Смяна тема">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:inline-block"></i>
+                </button>
+
+                <button id="mobile-menu-btn" class="lg:hidden text-zinc-700 dark:text-zinc-300 hover:text-amber-500 text-2xl p-2 focus:outline-none" aria-label="Меню">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 px-4 pt-3 pb-6 space-y-3 text-center font-medium shadow-2xl">
-            <a href="index.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Начало</a>
-            <a href="services.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Услуги</a>
-            <a href="prices.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Цени в €</a>
-            <a href="coverage.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Райони</a>
-            <a href="about.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">За нас</a>
-            <a href="reviews.html" class="block py-2 text-amber-400 font-bold border-b border-zinc-200 dark:border-zinc-800/50">Ревюта</a>
-            <a href="contact.html" class="block py-2 text-zinc-700 dark:text-zinc-300 hover:text-amber-400">Контакт</a>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 px-4 pt-3 pb-6 space-y-2 text-center font-medium shadow-2xl">
+            <a href="index.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Начало</a>
+            <a href="services.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Услуги</a>
+            <a href="prices.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Цени в €</a>
+            <a href="coverage.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Райони</a>
+            <a href="about.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">За нас</a>
+            <a href="reviews.html" class="block py-2.5 text-amber-400 font-bold border-b border-zinc-200 dark:border-zinc-800/50">Ревюта</a>
+            <a href="gallery.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50">Галерия</a>
+            <a href="contact.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400">Контакт</a>
         </div>
     </header>
 
-    <section class="py-16 max-w-7xl mx-auto px-4 border-zinc-200 dark:border-zinc-800">
+    <section class="py-16 max-w-7xl mx-auto px-4 w-full">
         <div class="text-center max-w-3xl mx-auto mb-12">
             <span class="text-amber-500 font-bold text-sm tracking-widest uppercase mb-2 block">Мнения на клиенти</span>
-            <h2 class="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white mb-4">Отзиви за Lock Me</h2>
+            <h1 class="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white mb-4">Отзиви за Lock Me</h1>
             <p class="text-zinc-600 dark:text-zinc-400">Прочетете какво казват нашите клиенти и оставете вашето мнение.</p>
         </div>
         
@@ -194,7 +245,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.addEventListener('DOMContentLoaded', loadAllReviews);
     </script>
 
-    <footer class="bg-zinc-100 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 py-10 mt-auto">
+    <footer class="bg-zinc-100 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 py-10 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
                 <p class="text-sm text-zinc-600 dark:text-zinc-400">&copy; 2026 Lock Me - Денонощен Авариен Ключар София.</p>
@@ -206,14 +257,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="coverage.html" class="hover:text-amber-400">Райони</a>
                 <a href="about.html" class="hover:text-amber-400">За нас</a>
                 <a href="reviews.html" class="hover:text-amber-400">Ревюта</a>
+                <a href="gallery.html" class="hover:text-amber-400">Галерия</a>
                 <a href="contact.html" class="hover:text-amber-400">Контакт</a>
             </div>
         </div>
     </footer>
 
+    <!-- STICKY MOBILE CTA -->
     <div class="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-zinc-950/95 border-t border-amber-500/30 dark:border-amber-500/50 p-2.5 z-50 lg:hidden backdrop-blur-md">
         <div class="grid grid-cols-2 gap-2">
-            <a href="tel:+359877558851" class="py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-zinc-950 font-black text-sm rounded-xl flex items-center justify-center space-x-2 shadow-lg">
+            <a href="tel:+359877558851" class="py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-zinc-950 font-black text-sm rounded-xl flex items-center justify-center space-x-2 shadow-lg animate-pulse-glow">
                 <i class="fa-solid fa-phone"></i>
                 <span>Обади се</span>
             </a>
@@ -225,16 +278,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
 
+        // Theme Toggle
         function toggleTheme() {
-            document.documentElement.classList.toggle('dark');
             if (document.documentElement.classList.contains('dark')) {
-                localStorage.setItem('color-theme', 'dark');
-            } else {
+                document.documentElement.classList.remove('dark');
                 localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
             }
         }
     </script>
