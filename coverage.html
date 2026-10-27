@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <title>Райони | Lock Me - Денонощен Ключар София</title>
+    <title>Райони | Lock Me - Търсене на квартал</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
@@ -45,7 +45,6 @@
         .animate-pulse-glow { animation: pulse-glow 2s infinite; }
     </style>
     <script>
-        // Immediately set theme before render to prevent flash
         if (localStorage.getItem('color-theme') === 'light') {
             document.documentElement.classList.remove('dark');
         } else {
@@ -117,25 +116,54 @@
         <div class="text-center mb-12">
             <span class="text-amber-500 font-bold text-sm tracking-widest uppercase mb-2 block">Покритие</span>
             <h1 class="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white mb-4">Обслужвани Райони в София</h1>
-            <p class="text-zinc-600 dark:text-zinc-400">Пристигаме до всеки адрес в София-град за по-малко от 30 минути!</p>
+            <p class="text-zinc-600 dark:text-zinc-400 mb-8">Пристигаме до всеки адрес в София-град за по-малко от 30 минути!</p>
+            
+            <!-- SEARCH BAR -->
+            <div class="max-w-xl mx-auto relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-zinc-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input type="text" id="district-search" oninput="filterDistricts()" placeholder="Търсете квартал (напр. Люлин, Младост, Център)..." class="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl pl-12 pr-4 py-4 text-sm text-zinc-900 dark:text-white focus:outline-none focus:border-amber-500 transition shadow-sm">
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl shadow-sm">
-                <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-6 border-b border-zinc-200 dark:border-zinc-800 pb-4">Основни Квартали</h3>
-                <ul class="grid grid-cols-2 gap-4 text-sm text-zinc-600 dark:text-zinc-400">
-                    <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Център</span></li>
-                    <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Люлин (всички)</span></li>
-                    <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Младост (1-4)</span></li>
-                    <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Надежда (всички)</span></li>
-                    <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Овча купел</span></li>
-                    <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Дружба</span></li>
-                    <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Лозенец</span></li>
-                    <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Студентски град</span></li>
-                    <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Витоша</span></li>
-                    <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Бояна / Драгалевци</span></li>
+                <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-6 border-b border-zinc-200 dark:border-zinc-800 pb-4">Списък с квартали</h3>
+                <ul id="districts-list" class="grid grid-cols-2 gap-4 text-sm text-zinc-600 dark:text-zinc-400 max-h-[400px] overflow-y-auto pr-2">
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Център</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Люлин (1-10)</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Младост (1-4)</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Надежда (1-4)</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Овча купел</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Дружба (1-2)</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Лозенец</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Студентски град</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Витоша</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Бояна</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Драгалевци</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Симеоново</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Манастирски ливади</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Кръстова вада</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Иван Вазов</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Изток</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Изгрев</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Гео Милев</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Редута</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Слатина</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Подуяне</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Красно село</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Бели брези</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Лагера</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Хиподрума</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Гоце Делчев</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Медицински център</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Триъгълника</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Врабница</span></li>
+                    <li class="district-item flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Обеля</span></li>
                 </ul>
             </div>
+
             <div class="bg-gradient-to-b from-amber-500/10 to-transparent border border-amber-500/30 p-8 rounded-3xl flex flex-col justify-center items-center text-center shadow-sm">
                 <div class="w-16 h-16 bg-amber-500 text-zinc-950 rounded-2xl flex items-center justify-center text-3xl font-black mb-6 animate-bounce">
                     <i class="fa-solid fa-stopwatch"></i>
@@ -151,6 +179,22 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function filterDistricts() {
+            const input = document.getElementById('district-search').value.toLowerCase();
+            const items = document.querySelectorAll('.district-item');
+            
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(input)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
 
     <footer class="bg-zinc-100 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 py-10 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -185,7 +229,6 @@
     </div>
 
     <script>
-        // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         if (mobileMenuBtn && mobileMenu) {
@@ -194,7 +237,6 @@
             });
         }
 
-        // Theme Toggle
         function toggleTheme() {
             if (document.documentElement.classList.contains('dark')) {
                 document.documentElement.classList.remove('dark');
