@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="bg" class="dark">
 <head>
@@ -80,40 +81,62 @@
         </div>
 
         <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-xl mb-12">
-            <table class="w-full text-left text-sm text-zinc-700 dark:text-zinc-300">
-                <thead class="bg-zinc-100 dark:bg-zinc-950 text-amber-500 uppercase text-xs font-bold border-b border-zinc-200 dark:border-zinc-800">
-                    <tr>
-                        <th class="p-4 sm:p-6">Услуга</th>
-                        <th class="p-4 sm:p-6 text-right">Цена (€)</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-zinc-800">
-                    <tr>
-                        <td class="p-4 sm:p-6 font-semibold text-zinc-900 dark:text-white">Аварийно отключване на блиндирана врата</td>
-                        <td class="p-4 sm:p-6 text-right font-black text-amber-400">от 35 €</td>
-                    </tr>
-                    <tr>
-                        <td class="p-4 sm:p-6 font-semibold text-zinc-900 dark:text-white">Отключване на интериорна / дървена врата</td>
-                        <td class="p-4 sm:p-6 text-right font-black text-amber-400">от 30 €</td>
-                    </tr>
-                    <tr>
-                        <td class="p-4 sm:p-6 font-semibold text-zinc-900 dark:text-white">Аварийно отключване на лек автомобил</td>
-                        <td class="p-4 sm:p-6 text-right font-black text-amber-400">от 45 €</td>
-                    </tr>
-                    <tr>
-                        <td class="p-4 sm:p-6 font-semibold text-zinc-900 dark:text-white">Подмяна на секретен патрон / брава</td>
-                        <td class="p-4 sm:p-6 text-right font-black text-amber-400">от 25 €</td>
-                    </tr>
-                    <tr>
-                        <td class="p-4 sm:p-6 font-semibold text-zinc-900 dark:text-white">Изваждане на ключ-дубликат / чип за вход</td>
-                        <td class="p-4 sm:p-6 text-right font-black text-amber-400">от 15 €</td>
-                    </tr>
-                    <tr>
-                        <td class="p-4 sm:p-6 font-semibold text-zinc-900 dark:text-white">Посещение на адрес през нощта (22:00 - 06:00)</td>
-                        <td class="p-4 sm:p-6 text-right font-black text-amber-400">+ 15 €</td>
-                    </tr>
-                </tbody>
-            </table>
+            <details class="group">
+                <summary class="flex items-center justify-between cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden p-4 sm:p-6 bg-zinc-100 dark:bg-zinc-950 text-amber-500 uppercase text-sm font-bold">
+                    <span>Услуги</span>
+                    <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open:rotate-180"></i>
+                </summary>
+                <div class="divide-y divide-zinc-200 dark:divide-zinc-800 text-sm text-zinc-700 dark:text-zinc-300 border-t border-zinc-200 dark:border-zinc-800">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Аварийно отключване на патрон нисък клас</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">40 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Блиндирана врата с патрон среден клас</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 65 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Патрон висок клас на сигурност</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 90 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Касова брава малка перка</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 60 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Касова брава средна перка</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 75 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Касова брава голяма перка</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 90 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Сейф-каса</span>
+                        <span class="text-sm sm:text-right font-bold text-amber-400 sm:max-w-xs">Цената се определя според вида на ключалката, броя ключалки и тяхната сложност</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Аварийно отключване на автомобил</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 60 - 80 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Подмяна на патрон/брава</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 40 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Посещение в работно време</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 20 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-6 p-4 sm:p-6">
+                        <span class="font-semibold text-zinc-900 dark:text-white">Посещение извън работно време</span>
+                        <span class="text-right font-black text-amber-400 whitespace-nowrap">от 30 €</span>
+                    </div>
+                </div>
+            </details>
+            <div class="p-4 sm:p-6 border-t border-zinc-200 dark:border-zinc-800 text-sm font-semibold text-red-500 space-y-1">
+                <p>*Всички цени са ориентировъчни и подлежат на доизясняване</p>
+                <p>**Цени неупоменати в ценоразписа се определят според вида и сложността на отключване</p>
+            </div>
         </div>
 
         <div class="text-center bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl">
@@ -172,3 +195,4 @@
     </script>
 </body>
 </html>
+</body></html>
