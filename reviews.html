@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bg" class="dark">
+<html lang="bg" class="dark" data-base="/">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,9 @@
     <meta name="description" content="Отзиви на клиенти за Lock Me - денонощен ключар и автоключар в София. Прочетете мненията или оставете вашето.">
     <meta name="theme-color" content="#09090b">
     <link rel="canonical" href="https://lockmebg.com/reviews.html">
+    <link rel="alternate" hreflang="bg" href="https://lockmebg.com/reviews.html">
+    <link rel="alternate" hreflang="en" href="https://lockmebg.com/en/reviews.html">
+    <link rel="alternate" hreflang="x-default" href="https://lockmebg.com/reviews.html">
     
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Lock Me">
@@ -62,6 +65,7 @@
                 <a href="prices.html" class="hover:text-amber-400 transition" data-translate="nav_prices">Цени</a>
                 <a href="coverage.html" class="hover:text-amber-400 transition" data-translate="nav_coverage">Райони</a>
                 <a href="about.html" class="hover:text-amber-400 transition" data-translate="nav_about">За нас</a>
+                <a href="gallery.html" class="hover:text-amber-400 transition" data-translate="nav_gallery">Галерия</a>
                 <a href="reviews.html" class="text-amber-400 font-bold transition" data-translate="nav_reviews">Ревюта</a>
                 <a href="contact.html" class="hover:text-amber-400 transition" data-translate="nav_contact">Контакт</a>
             </nav>
@@ -99,7 +103,8 @@
             <a href="prices.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50" data-translate="nav_prices_m">Цени в €</a>
             <a href="coverage.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50" data-translate="nav_coverage">Райони</a>
             <a href="about.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50" data-translate="nav_about">За нас</a>
-            <a href="reviews.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50" data-translate="nav_reviews">Ревюта</a>
+            <a href="gallery.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400 border-b border-zinc-200 dark:border-zinc-800/50" data-translate="nav_gallery">Галерия</a>
+            <a href="reviews.html" class="block py-2.5 text-amber-500 dark:text-amber-400 font-bold border-b border-zinc-200 dark:border-zinc-800/50" data-translate="nav_reviews">Ревюта</a>
             <a href="contact.html" class="block py-2.5 text-zinc-700 dark:text-zinc-300 hover:text-amber-400" data-translate="nav_contact">Контакт</a>
         </nav>
     </header>
@@ -108,14 +113,14 @@
 
 <section class="py-16 max-w-7xl mx-auto px-4 w-full">
 <div class="text-center max-w-3xl mx-auto mb-12">
-<span class="text-amber-500 font-bold text-sm tracking-widest uppercase mb-2 block" data-translate="rev_kicker">&Mcy;&ncy;&iecy;&ncy;&icy;&yacy; &ncy;&acy; &kcy;&lcy;&icy;&iecy;&ncy;&tcy;&icy;</span>
-<h1 class="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white mb-4" data-translate="rv_h1">&Ocy;&tcy;&zcy;&icy;&vcy;&icy; &zcy;&acy; Lock Me</h1>
-<p class="text-zinc-600 dark:text-zinc-400" data-translate="rv_intro">&Pcy;&rcy;&ocy;&chcy;&iecy;&tcy;&iecy;&tcy;&iecy; &kcy;&acy;&kcy;&vcy;&ocy; &kcy;&acy;&zcy;&vcy;&acy;&tcy; &ncy;&acy;&shcy;&icy;&tcy;&iecy; &kcy;&lcy;&icy;&iecy;&ncy;&tcy;&icy; &icy; &ocy;&scy;&tcy;&acy;&vcy;&iecy;&tcy;&iecy; &vcy;&acy;&shcy;&iecy;&tcy;&ocy; &mcy;&ncy;&iecy;&ncy;&icy;&iecy;.</p>
+<span class="text-amber-500 font-bold text-sm tracking-widest uppercase mb-2 block" data-translate="rev_kicker">Мнения на клиенти</span>
+<h1 class="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white mb-4" data-translate="rv_h1">Отзиви за Lock Me</h1>
+<p class="text-zinc-600 dark:text-zinc-400" data-translate="rv_intro">Прочетете какво казват нашите клиенти и оставете вашето мнение.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="all-reviews">
 <div class="col-span-full text-center py-10 text-zinc-500">
 <svg class="ic text-3xl mb-4 text-amber-500 animate-spin" aria-hidden="true"><use href="#fa-solid-spinner"></use></svg>
-<p data-translate="rev_loading">&Zcy;&acy;&rcy;&iecy;&zhcy;&dcy;&acy;&ncy;&iecy; &ncy;&acy; &rcy;&iecy;&vcy;&yucy;&tcy;&acy;&tcy;&acy;...</p>
+<p data-translate="rev_loading">Зареждане на ревютата...</p>
 </div>
 </div>
 <div class="max-w-2xl mx-auto bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl shadow-lg">
@@ -123,37 +128,37 @@
 <div class="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center text-zinc-950 text-xl font-bold">
 <svg class="ic " aria-hidden="true"><use href="#fa-regular-comment-dots"></use></svg>
 </div>
-<h3 class="text-xl font-bold text-zinc-900 dark:text-white leading-none" data-translate="rf_title">&Ocy;&scy;&tcy;&acy;&vcy;&iecy;&tcy;&iecy; &rcy;&iecy;&vcy;&yucy;</h3>
+<h3 class="text-xl font-bold text-zinc-900 dark:text-white leading-none" data-translate="rf_title">Оставете ревю</h3>
 </div>
 <form class="space-y-4" id="review-form">
 <div>
-<label class="text-xs text-zinc-600 dark:text-zinc-400 font-semibold mb-1 block" data-translate="rf_name" for="rev-name">&Icy;&mcy;&iecy; / &Icy;&ncy;&icy;&tscy;&icy;&acy;&lcy;&icy;:</label>
+<label class="text-xs text-zinc-600 dark:text-zinc-400 font-semibold mb-1 block" data-translate="rf_name" for="rev-name">Име / Инициали:</label>
 <input autocomplete="given-name" class="w-full bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-900 dark:text-white focus:outline-none focus:border-amber-500 transition" id="rev-name" maxlength="40" name="name" required type="text">
 </div>
 <div>
-<label class="text-xs text-zinc-600 dark:text-zinc-400 font-semibold mb-1 block" data-translate="rf_rating" for="rev-rating">&Vcy;&acy;&shcy;&acy;&tcy;&acy; &ocy;&tscy;&iecy;&ncy;&kcy;&acy;:</label>
+<label class="text-xs text-zinc-600 dark:text-zinc-400 font-semibold mb-1 block" data-translate="rf_rating" for="rev-rating">Вашата оценка:</label>
 <div class="relative">
 <select class="w-full bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl pl-4 pr-10 py-3 text-sm text-zinc-900 dark:text-white focus:outline-none focus:border-amber-500 transition appearance-none" id="rev-rating" name="rating" required>
-<option data-translate="rf_5" value="5">⭐⭐⭐⭐⭐ &Ocy;&tcy;&lcy;&icy;&chcy;&ncy;&ocy; (5/5)</option>
-<option data-translate="rf_4" value="4">⭐⭐⭐⭐ &Mcy;&ncy;&ocy;&gcy;&ocy; &dcy;&ocy;&bcy;&rcy;&ocy; (4/5)</option>
-<option data-translate="rf_3" value="3">⭐⭐⭐ &Dcy;&ocy;&bcy;&rcy;&ocy; (3/5)</option>
-<option data-translate="rf_2" value="2">⭐⭐ &Zcy;&acy;&dcy;&ocy;&vcy;&ocy;&lcy;&icy;&tcy;&iecy;&lcy;&ncy;&ocy; (2/5)</option>
-<option data-translate="rf_1" value="1">⭐ &Scy;&lcy;&acy;&bcy;&ocy; (1/5)</option>
+<option data-translate="rf_5" value="5">⭐⭐⭐⭐⭐ Отлично (5/5)</option>
+<option data-translate="rf_4" value="4">⭐⭐⭐⭐ Много добро (4/5)</option>
+<option data-translate="rf_3" value="3">⭐⭐⭐ Добро (3/5)</option>
+<option data-translate="rf_2" value="2">⭐⭐ Задоволително (2/5)</option>
+<option data-translate="rf_1" value="1">⭐ Слабо (1/5)</option>
 </select>
 <svg class="ic pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 text-xs" aria-hidden="true"><use href="#fa-solid-chevron-down"></use></svg>
 </div>
 </div>
 <div>
-<label class="text-xs text-zinc-600 dark:text-zinc-400 font-semibold mb-1 block" data-translate="rf_comment" for="rev-text">&Kcy;&ocy;&mcy;&iecy;&ncy;&tcy;&acy;&rcy;:</label>
+<label class="text-xs text-zinc-600 dark:text-zinc-400 font-semibold mb-1 block" data-translate="rf_comment" for="rev-text">Коментар:</label>
 <textarea class="w-full bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-900 dark:text-white focus:outline-none focus:border-amber-500 transition" id="rev-text" maxlength="500" minlength="10" name="text" required rows="3"></textarea>
-<p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1" data-translate="rf_note">&Rcy;&iecy;&vcy;&yucy;&tcy;&ocy; &scy;&iecy; &pcy;&ucy;&bcy;&lcy;&icy;&kcy;&ucy;&vcy;&acy; &scy;&lcy;&iecy;&dcy; &ocy;&dcy;&ocy;&bcy;&rcy;&iecy;&ncy;&icy;&iecy;.</p>
+<p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1" data-translate="rf_note">Ревюто се публикува след одобрение.</p>
 </div>
 <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">
 <label>Website <input autocomplete="off" name="website" tabindex="-1" type="text"></label>
 </div>
 <button class="w-full py-4 bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-60" id="rev-btn" type="submit">
 <svg class="ic " aria-hidden="true"><use href="#fa-solid-paper-plane"></use></svg>
-<span data-translate="rf_submit">&Icy;&zcy;&pcy;&rcy;&acy;&tcy;&icy; &rcy;&iecy;&vcy;&yucy;</span>
+<span data-translate="rf_submit">Изпрати ревю</span>
 </button>
 <div aria-live="polite" class="hidden text-sm font-semibold mt-3 text-center" id="rev-msg" role="status"></div>
 </form>
@@ -180,6 +185,7 @@
                     <a href="prices.html" class="hover:text-amber-400" data-translate="f_nav_prices">Цени</a>
                     <a href="coverage.html" class="hover:text-amber-400" data-translate="f_nav_coverage">Райони</a>
                     <a href="about.html" class="hover:text-amber-400" data-translate="f_nav_about">За нас</a>
+                    <a href="gallery.html" class="hover:text-amber-400" data-translate="nav_gallery">Галерия</a>
                     <a href="reviews.html" class="text-amber-500 dark:text-amber-400 font-bold" data-translate="f_nav_reviews">Ревюта</a>
                     <a href="contact.html" class="hover:text-amber-400" data-translate="f_nav_contact">Контакт</a>
                     <a href="privacy.html" class="hover:text-amber-400" data-translate="f_privacy">Поверителност</a>
