@@ -3,21 +3,17 @@
   'use strict';
 
   /* ===== НАСТРОЙКИ ===== */
-  // Адрес за ЗАПИС на нови ревюта (твоят SheetDB API)
   var SHEETDB_URL = 'https://sheetdb.io/api/v1/3pzi54zvfbmyc';
-  // По избор, за по-силна защита: адрес на "Publish to web" CSV от Google Sheets (виж README.md).
-  // Ако е попълнен, ревютата се четат оттам, а не от SheetDB.
   var REVIEWS_FEED_URL = '';
 
   var CACHE_KEY = 'lm-reviews-cache-v1';
-  var CACHE_TTL = 10 * 60 * 1000;     // 10 мин. кеш - пести заявки към SheetDB
+  var CACHE_TTL = 10 * 60 * 1000;
   var LOG_KEY = 'lm-review-log';
   var MAX_NAME = 40, MAX_TEXT = 500, MIN_TEXT = 10;
-  var COOLDOWN_MS = 5 * 60 * 1000;    // пауза между две ревюта от един браузър
+  var COOLDOWN_MS = 5 * 60 * 1000;
   var MAX_PER_DAY = 3;
-  var MIN_FILL_MS = 3000;             // по-бързо от 3 сек. = бот
+  var MIN_FILL_MS = 3000;
   var SHOW_LIMIT = 60;
-  // Колоната "approved" в Google Sheet: ревю с тези стойности се скрива
   var HIDDEN_VALUES = ['no', 'false', '0', 'не', 'hidden', 'pending', 'скрито'];
 
   var doc = document;
@@ -28,13 +24,12 @@
   function sGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function sSet(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* ignore */ } }
 
-  /* ---------- Почистване на вход ---------- */
   function clean(s, max) {
     s = String(s == null ? '' : s)
-      .replace(/[\u0000-\u001f\u007f<>]/g, ' ')   // контролни символи и HTML скоби
+      .replace(/[\u0000-\u001f\u007f<>]/g, ' ')
       .replace(/\s+/g, ' ')
       .trim()
-      .replace(/^[=+\-@\s]+/, '');                // формули в Google Sheets (=, +, -, @)
+      .replace(/^[=+\-@\s]+/, '');
     return s.slice(0, max);
   }
   function clampRating(v) {
@@ -44,7 +39,6 @@
   }
   var LINK_RE = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(com|net|org|bg|ru|cn|info|xyz|top|shop|site|online|link)\b)/i;
 
-  /* ---------- Четене ---------- */
   function fetchWithTimeout(url, opts, ms) {
     if (typeof AbortController === 'undefined') return fetch(url, opts);
     var c = new AbortController();
@@ -116,10 +110,9 @@
         date: clean(r.date, 20)
       });
     });
-    return out.reverse(); // най-новите първи
+    return out.reverse();
   }
 
-  /* ---------- Изобразяване (само през textContent - без XSS) ---------- */
   function el(tag, cls, text) {
     var e = doc.createElement(tag);
     if (cls) e.className = cls;
@@ -134,7 +127,7 @@
     var stars = el('div', 'flex text-amber-500 mb-3 text-sm');
     stars.setAttribute('role', 'img');
     stars.setAttribute('aria-label', t('rev_stars') + ' ' + r.rating + '/5');
-    stars.innerHTML = STAR.repeat(r.rating);   // статичен низ, не съдържа данни от потребител
+    stars.innerHTML = STAR.repeat(r.rating);
     top.appendChild(stars);
     top.appendChild(el('p', 'text-sm text-zinc-600 dark:text-zinc-400 mb-4 font-medium italic', '"' + r.text + '"'));
     var bottom = el('div', 'flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800 pt-3');
@@ -167,7 +160,6 @@
     });
   }
 
-  /* ---------- Изпращане ---------- */
   function readLog() {
     try { var a = JSON.parse(sGet(LOG_KEY) || '[]'); return Array.isArray(a) ? a : []; } catch (e) { return []; }
   }
@@ -189,16 +181,12 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      // 1) honeypot - скрито поле, което хората не попълват
       if (form.elements['website'] && form.elements['website'].value) { say('rev_thanks', true); form.reset(); return; }
-      // 2) твърде бързо изпращане
       if (Date.now() - loadedAt < MIN_FILL_MS) { say('rev_wait', false); return; }
-      // 3) ограничение по брой и време (на браузър)
       var now = Date.now();
       var log = readLog().filter(function (ts) { return now - ts < 24 * 3600 * 1000; });
       if (log.length && now - log[log.length - 1] < COOLDOWN_MS) { say('rev_cooldown', false); return; }
       if (log.length >= MAX_PER_DAY) { say('rev_limit', false); return; }
-      // 4) валидиране и почистване
       var name = clean(form.elements['name'].value, MAX_NAME);
       var text = clean(form.elements['text'].value, MAX_TEXT);
       var rating = clampRating(form.elements['rating'].value);
@@ -211,7 +199,7 @@
       body.append('data[rating]', String(rating));
       body.append('data[text]', text);
       body.append('data[date]', new Date().toLocaleDateString('bg-BG'));
-      body.append('data[approved]', 'no');   // нови ревюта чакат одобрение от теб в Google Sheet
+      body.append('data[approved]', 'no');
 
       fetchWithTimeout(SHEETDB_URL, {
         method: 'POST',
@@ -224,6 +212,8 @@
         form.reset();
         loadedAt = Date.now();
         say('rev_thanks', true);
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'review_submitted', rating: rating });
       }).catch(function () {
         say('rev_err', false);
       }).then(function () { busy(false); });

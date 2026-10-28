@@ -28,7 +28,6 @@
     (e.getAttribute('data-alias') || '').split('|').forEach(function (a) { var n = norm(a); if (n) keys.push(n); });
     return { name: e.textContent.trim(), keys: keys.filter(Boolean) };
   });
-  // по-дългите имена първи (напр. "Лозенец" преди "Лозен")
   districts.sort(function (a, b) {
     return Math.max.apply(null, b.keys.map(function (k) { return k.length; })) - Math.max.apply(null, a.keys.map(function (k) { return k.length; }));
   });
@@ -45,7 +44,7 @@
     return null;
   }
 
-  var last = null; // за превод при смяна на езика
+  var last = null;
 
   function show(kind, name, raw) {
     last = { kind: kind, name: name, raw: raw };
@@ -67,6 +66,8 @@
 
   function run(value) {
     var v = String(value || '').trim().slice(0, 80);
+    window.dataLayer = window.dataLayer || [];
+    if (v) window.dataLayer.push({ event: 'coverage_search', search_term: v });
     if (norm(v).length < 3) { show('short', '', v); return; }
     var d = find(v);
     if (d) show('ok', d.name, v); else show('no', '', v);

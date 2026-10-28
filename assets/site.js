@@ -8,13 +8,12 @@
   function qa(s, c) { return Array.prototype.slice.call((c || doc).querySelectorAll(s)); }
   function sGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function sSet(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* блокирано хранилище */ } }
-  var base = root.getAttribute('data-base') || '';
+  var base = root.getAttribute('data-base') || '/';
 
   /* ---------- Език (BG / EN) ---------- */
   var I = window.I18N || { bg: {}, en: {} };
-  var lang = sGet('site-lang') === 'en' ? 'en' : 'bg';
-  var titleEl = q('title');
-  var titleBg = titleEl ? titleEl.textContent : '';
+  var isEnPath = location.pathname.indexOf('/en/') !== -1 || root.lang === 'en';
+  var lang = isEnPath ? 'en' : 'bg';
 
   function t(key) {
     return (I[lang] && I[lang][key]) || (I.bg && I.bg[key]) || key;
@@ -22,48 +21,25 @@
   window.t = t;
   window.getLang = function () { return lang; };
 
-  // Сменя само текстовия възел, за да не изтрие икони (svg) в същия елемент
-  function setText(el, val) {
-    if (!el.children.length) { el.textContent = val; return; }
-    var done = false;
-    Array.prototype.slice.call(el.childNodes).forEach(function (n) {
-      if (n.nodeType === 3 && n.nodeValue.trim()) {
-        if (!done) { n.nodeValue = ' ' + val + ' '; done = true; } else { n.nodeValue = ''; }
-      }
-    });
-  }
-
-  function applyLang() {
-    root.lang = lang;
-    qa('[data-translate]').forEach(function (el) {
-      var v = I[lang] && I[lang][el.getAttribute('data-translate')];
-      if (v != null) setText(el, v);
-    });
-    qa('[data-translate-html]').forEach(function (el) {
-      var v = I[lang] && I[lang][el.getAttribute('data-translate-html')];
-      if (v != null) el.innerHTML = v;
-    });
-    qa('[data-translate-placeholder]').forEach(function (el) {
-      var v = I[lang] && I[lang][el.getAttribute('data-translate-placeholder')];
-      if (v != null) el.setAttribute('placeholder', v);
-    });
-    qa('[data-translate-aria]').forEach(function (el) {
-      var v = I[lang] && I[lang][el.getAttribute('data-translate-aria')];
-      if (v != null) el.setAttribute('aria-label', v);
-    });
-    if (titleEl) {
-      var en = titleEl.getAttribute('data-en');
-      titleEl.textContent = (lang === 'en' && en) ? en : titleBg;
-    }
+  function updateLangBtn() {
     var lb = q('#lang-btn');
     if (lb) lb.textContent = lang === 'bg' ? 'BG / EN' : 'EN / BG';
-    doc.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
   }
 
   function toggleLang() {
-    lang = lang === 'bg' ? 'en' : 'bg';
-    sSet('site-lang', lang);
-    applyLang();
+    var currentPath = window.location.pathname;
+    var isEn = currentPath.indexOf('/en/') !== -1;
+    var filename = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+    if (!filename || filename === 'en') {
+      filename = 'index.html';
+    }
+    if (isEn) {
+      sSet('site-lang', 'bg');
+      window.location.href = (filename === 'index.html') ? '/' : '/' + filename;
+    } else {
+      sSet('site-lang', 'en');
+      window.location.href = (filename === 'index.html') ? '/en/' : '/en/' + filename;
+    }
   }
   window.toggleLang = toggleLang;
 
@@ -164,14 +140,14 @@
     b.setAttribute('role', 'dialog');
     b.setAttribute('aria-label', 'Cookies');
     b.className = 'fixed left-3 right-3 bottom-24 lg:bottom-4 lg:left-auto lg:right-4 lg:max-w-md z-[60] bg-white dark:bg-zinc-900 border border-amber-500/50 rounded-2xl shadow-2xl p-4 text-sm text-zinc-700 dark:text-zinc-300';
+    var privHref = (isEnPath ? '/en/privacy.html' : '/privacy.html');
     b.innerHTML =
-      '<p><span data-translate="cookie_text"></span> <a href="' + base + 'privacy.html" class="underline text-amber-600 dark:text-amber-400 font-semibold" data-translate="cookie_link"></a></p>' +
+      '<p><span>' + t('cookie_text') + '</span> <a href="' + privHref + '" class="underline text-amber-600 dark:text-amber-400 font-semibold">' + t('cookie_link') + '</a></p>' +
       '<div class="grid grid-cols-2 gap-2 mt-3">' +
-      '<button type="button" data-consent="denied" class="py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-bold text-xs hover:border-amber-500 transition" data-translate="cookie_deny"></button>' +
-      '<button type="button" data-consent="granted" class="py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 font-black text-xs transition" data-translate="cookie_accept"></button>' +
+      '<button type="button" data-consent="denied" class="py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-bold text-xs hover:border-amber-500 transition">' + t('cookie_deny') + '</button>' +
+      '<button type="button" data-consent="granted" class="py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 font-black text-xs transition">' + t('cookie_accept') + '</button>' +
       '</div>';
     doc.body.appendChild(b);
-    applyLang();
   }
   function initConsent() {
     if (!sGet('lm-consent')) showBanner();
@@ -208,7 +184,7 @@
     initBackToTop();
     initTracking();
     initConsent();
-    applyLang();
+    updateLangBtn();
   }
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', init); else init();
 })();
