@@ -66,10 +66,11 @@
 
   function run(value) {
     var v = String(value || '').trim().slice(0, 80);
-    window.dataLayer = window.dataLayer || [];
-    if (v) window.dataLayer.push({ event: 'coverage_search', search_term: v });
     if (norm(v).length < 3) { show('short', '', v); return; }
     var d = find(v);
+    /* към dataLayer отива само резултатът и кварталът от списъка - никога написаното от клиента */
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'coverage_search', coverage_result: d ? 'covered' : 'not_covered', district: d ? d.name : '' });
     if (d) show('ok', d.name, v); else show('no', '', v);
   }
 

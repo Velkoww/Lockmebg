@@ -35,10 +35,10 @@
     }
     if (isEn) {
       sSet('site-lang', 'bg');
-      window.location.href = (filename === 'index.html') ? '/' : '/' + filename;
+      window.location.href = ((filename === 'index.html') ? '/' : '/' + filename) + window.location.search + window.location.hash;
     } else {
       sSet('site-lang', 'en');
-      window.location.href = (filename === 'index.html') ? '/en/' : '/en/' + filename;
+      window.location.href = ((filename === 'index.html') ? '/en/' : '/en/' + filename) + window.location.search + window.location.hash;
     }
   }
   window.toggleLang = toggleLang;
@@ -138,7 +138,7 @@
     var b = doc.createElement('div');
     b.id = 'cookie-banner';
     b.setAttribute('role', 'dialog');
-    b.setAttribute('aria-label', 'Cookies');
+    b.setAttribute('aria-label', t('cookie_aria'));
     b.className = 'fixed left-3 right-3 bottom-24 lg:bottom-4 lg:left-auto lg:right-4 lg:max-w-md z-[60] bg-white dark:bg-zinc-900 border border-amber-500/50 rounded-2xl shadow-2xl p-4 text-sm text-zinc-700 dark:text-zinc-300';
     var privHref = (isEnPath ? '/en/privacy.html' : '/privacy.html');
     b.innerHTML =
