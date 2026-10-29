@@ -1,11 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://lockmebg.com/</loc><lastmod>2026-10-27</lastmod><priority>1.0</priority></url>
-  <url><loc>https://lockmebg.com/services.html</loc><lastmod>2026-10-27</lastmod><priority>0.9</priority></url>
-  <url><loc>https://lockmebg.com/prices.html</loc><lastmod>2026-10-27</lastmod><priority>0.9</priority></url>
-  <url><loc>https://lockmebg.com/coverage.html</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://lockmebg.com/about.html</loc><lastmod>2026-10-27</lastmod><priority>0.7</priority></url>
-  <url><loc>https://lockmebg.com/reviews.html</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://lockmebg.com/contact.html</loc><lastmod>2026-10-27</lastmod><priority>0.9</priority></url>
-  <url><loc>https://lockmebg.com/privacy.html</loc><lastmod>2026-10-27</lastmod><priority>0.3</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://lockmebg.com/</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/services.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/services.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/services.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/en/services.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/services.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/services.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/prices.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/prices.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/prices.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/prices.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/en/prices.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/prices.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/prices.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/prices.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/coverage.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/coverage.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/coverage.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/coverage.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/en/coverage.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/coverage.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/coverage.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/coverage.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/about.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/en/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/about.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/reviews.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/reviews.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/en/reviews.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/reviews.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/contact.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/contact.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/privacy.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/en/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/privacy.html"/>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.3</priority>
+  </url>
 </urlset>
