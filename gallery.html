@@ -10,8 +10,7 @@
     <link rel="alternate" hreflang="bg" href="https://lockmebg.com/gallery.html">
     <link rel="alternate" hreflang="en" href="https://lockmebg.com/en/gallery.html">
     <link rel="alternate" hreflang="x-default" href="https://lockmebg.com/gallery.html">
-    <meta name="robots" content="noindex, follow">
-    <meta property="og:type" content="website">
+        <meta property="og:type" content="website">
     <meta property="og:site_name" content="Lock Me">
     <meta property="og:locale" content="bg_BG">
     <meta property="og:title" content="Галерия | Lock Me - Денонощен Ключар София">
@@ -28,7 +27,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <script>try{if(localStorage.getItem('color-theme')==='light'){document.documentElement.classList.remove('dark');}else{document.documentElement.classList.add('dark');}}catch(e){document.documentElement.classList.add('dark');}</script>
     <link rel="preload" href="assets/fonts/inter-var-latin-cyrillic.woff" as="font" type="font/woff" crossorigin>
-    <link rel="stylesheet" href="assets/tailwind.css?v=4977f1d6">
+    <link rel="stylesheet" href="assets/tailwind.css?v=e23d2cd5">
     
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -54,7 +53,7 @@
     <header class="sticky top-0 z-40 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             <a href="/" class="flex items-center space-x-3 group shrink-0">
-                <img src="logo.png" alt="Lock Me" width="44" height="44" class="w-11 h-11 object-contain drop-shadow-[0_0_10px_rgba(245,158,11,0.35)] group-hover:scale-105 transition">
+                <img src="logo-88.png" alt="Lock Me" width="44" height="44" class="w-11 h-11 object-contain drop-shadow-[0_0_10px_rgba(245,158,11,0.35)] group-hover:scale-105 transition">
                 <div>
                     <span class="text-lg font-black tracking-tight text-zinc-900 dark:text-white block uppercase leading-none whitespace-nowrap">LOCK <span class="text-amber-500">ME</span></span>
                     <span class="hidden 2xl:block text-[10px] text-zinc-600 dark:text-zinc-400 tracking-wider uppercase font-semibold mt-1 whitespace-nowrap" data-translate="header_sub">Денонощни Ключарски Услуги</span>
@@ -113,13 +112,24 @@
 
     <main id="main" class="flex-1 w-full">
 
-<section class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center min-h-[50vh] flex flex-col justify-center w-full">
-<div class="max-w-3xl mx-auto mb-16 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-12 rounded-3xl shadow-sm">
-<span class="text-amber-500 font-bold text-sm tracking-widest uppercase mb-2 block" data-translate="nav_gallery">Галерия</span>
-<h1 class="text-4xl sm:text-5xl font-black text-zinc-900 dark:text-white mb-6" data-translate="gal_h1">Снимки и Проекти</h1>
-<p class="text-zinc-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed" data-translate="gal_p">Тази страница е в процес на разработка. Скоро тук ще намерите снимки от нашата реална работа на терен!</p>
-</div>
-</section>
+<section class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-amber-500 font-bold text-sm tracking-widest uppercase mb-2 block" data-translate="nav_gallery">Галерия</span>
+                <h1 class="text-4xl sm:text-5xl font-black text-zinc-900 dark:text-white mb-4" data-translate="gal_h1">Снимки и Проекти</h1>
+                <p class="text-zinc-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed" data-translate="gal_p">Вижте нашата работа</p>
+            </div>
+            <ul id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4" data-l-close="Затвори" data-l-prev="Предишна" data-l-next="Следваща">
+                <li><a href="assets/gallery/work-01.webp" data-gallery class="block overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-sm"><img src="assets/gallery/work-01-thumb.webp" alt="Голям метален сейф с ключалка и дръжка" width="600" height="800" decoding="async" class="w-full h-auto aspect-[3/4] object-cover hover:scale-105 transition duration-300"></a></li>
+                <li><a href="assets/gallery/work-02.webp" data-gallery class="block overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-sm"><img src="assets/gallery/work-02-thumb.webp" alt="Отворен голям сейф с рафтове" width="600" height="800" decoding="async" class="w-full h-auto aspect-[3/4] object-cover hover:scale-105 transition duration-300"></a></li>
+                <li><a href="assets/gallery/work-03.webp" data-gallery class="block overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-sm"><img src="assets/gallery/work-03-thumb.webp" alt="Малък метален сейф с ключалка отгоре" width="600" height="800" decoding="async" class="w-full h-auto aspect-[3/4] object-cover hover:scale-105 transition duration-300"></a></li>
+                <li><a href="assets/gallery/work-04.webp" data-gallery class="block overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-sm"><img src="assets/gallery/work-04-thumb.webp" alt="Малък сейф с отворена врата" width="600" height="800" loading="lazy" decoding="async" class="w-full h-auto aspect-[3/4] object-cover hover:scale-105 transition duration-300"></a></li>
+                <li><a href="assets/gallery/work-05.webp" data-gallery class="block overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-sm"><img src="assets/gallery/work-05-thumb.webp" alt="Отворен сейф и демонтирана ключалка с ключ на пода" width="600" height="800" loading="lazy" decoding="async" class="w-full h-auto aspect-[3/4] object-cover hover:scale-105 transition duration-300"></a></li>
+                <li><a href="assets/gallery/work-06.webp" data-gallery class="block overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-sm"><img src="assets/gallery/work-06-thumb.webp" alt="Дълги сейфови ключове и ключалки на работния плот" width="600" height="800" loading="lazy" decoding="async" class="w-full h-auto aspect-[3/4] object-cover hover:scale-105 transition duration-300"></a></li>
+                <li><a href="assets/gallery/work-07.webp" data-gallery class="block overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-sm"><img src="assets/gallery/work-07-thumb.webp" alt="Врата на трезор с ключалки" width="600" height="800" loading="lazy" decoding="async" class="w-full h-auto aspect-[3/4] object-cover hover:scale-105 transition duration-300"></a></li>
+                <li><a href="assets/gallery/work-08.webp" data-gallery class="block overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-sm"><img src="assets/gallery/work-08-thumb.webp" alt="Отворена врата на трезор" width="600" height="800" loading="lazy" decoding="async" class="w-full h-auto aspect-[3/4] object-cover hover:scale-105 transition duration-300"></a></li>
+                <li><a href="assets/gallery/work-09.webp" data-gallery class="block overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-sm"><img src="assets/gallery/work-09-thumb.webp" alt="Мъж пред врата на трезор" width="600" height="800" loading="lazy" decoding="async" class="w-full h-auto aspect-[3/4] object-cover hover:scale-105 transition duration-300"></a></li>
+            </ul>
+        </section>
 
     </main>
 
@@ -177,7 +187,8 @@
         <svg class="ic " aria-hidden="true"><use href="#fa-solid-arrow-up"></use></svg>
     </button>
 
-    <script src="assets/i18n.js?v=742d14df" defer></script>
+    <script src="assets/i18n.js?v=a8148b6d" defer></script>
     <script src="assets/site.js?v=da30568f" defer></script>
+    <script src="assets/gallery.js?v=74b591e1" defer></script>
 </body>
 </html>
