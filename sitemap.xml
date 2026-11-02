@@ -128,4 +128,20 @@
     <lastmod>2026-10-29</lastmod>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://lockmebg.com/gallery.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/gallery.html"/>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lockmebg.com/en/gallery.html</loc>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://lockmebg.com/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockmebg.com/en/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockmebg.com/gallery.html"/>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.6</priority>
+  </url>
 </urlset>
