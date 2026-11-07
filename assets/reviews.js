@@ -5,6 +5,15 @@
   /* ===== НАСТРОЙКИ ===== */
   var SHEETDB_URL = 'https://sheetdb.io/api/v1/3pzi54zvfbmyc';
   var REVIEWS_FEED_URL = '';
+  /* Google Apps Script към таблицата - ако е попълнен, се ползва вместо SheetDB */
+  var APPS_SCRIPT_URL = '';
+  var API_URL = APPS_SCRIPT_URL || SHEETDB_URL;
+
+  /* Ръчно добавени ревюта - показват се винаги, дори ако таблицата не отговаря */
+  var MANUAL_REVIEWS = [
+    { name: 'Масимо Василев', rating: 5, date: '31.10.2026',
+      text: 'Много съм доволен от услугите на екипа, ателието им е на леснодостъпно място точно до метростанция „Константин Величков“. Собственикът, който почти винаги е там, е много мил и усмихнат. Няколко пъти ми се е налагало да ползвам техни услуги и никога не съм оставал разочарован. Препоръчвам!' }
+  ];
 
   var CACHE_KEY = 'lm-reviews-cache-v2';
   var CACHE_TTL = 10 * 60 * 1000;
@@ -85,10 +94,10 @@
     var cached = FORCE_REFRESH ? null : readCache(false);
     if (cached) return Promise.resolve(cached);
     var feed = !!REVIEWS_FEED_URL;
-    return fetchWithTimeout(feed ? REVIEWS_FEED_URL : SHEETDB_URL, { cache: 'no-store', headers: { 'Accept': 'application/json' } }, 9000)
+    return fetchWithTimeout(feed ? REVIEWS_FEED_URL : API_URL, { cache: 'no-store' }, 9000)
       .then(function (r) {
         if (!r.ok) {
-          if (window.console) console.warn('[reviews] SheetDB отговори с HTTP ' + r.status + (r.status === 402 || r.status === 429 ? ' - вероятно е изчерпан месечният лимит на заявки' : ''));
+          if (window.console) console.warn('[reviews] Сървърът за ревюта отговори с HTTP ' + r.status + (r.status === 402 || r.status === 429 ? ' - вероятно е изчерпан месечният лимит на заявки' : ''));
           throw new Error('http ' + r.status);
         }
         return feed ? r.text().then(parseCSV) : r.json();
@@ -161,12 +170,29 @@
     lastItems.slice(0, limit).forEach(function (r) { container.appendChild(card(r)); });
   }
 
+  function dateKey(d) {
+    var m = /(\d{1,2})\.(\d{1,2})\.(\d{4})/.exec(d || '');
+    return m ? (+m[3]) * 10000 + (+m[2]) * 100 + (+m[1]) : 0;
+  }
+  function merge(items) {
+    var seen = {}, out = [];
+    normalize(MANUAL_REVIEWS.slice().reverse()).concat(items).forEach(function (r) {
+      var k = r.text.toLowerCase().replace(/[^a-zа-я0-9]/g, '').slice(0, 80);
+      if (seen[k]) return; seen[k] = 1; out.push(r);
+    });
+    return out.map(function (r, i) { return { r: r, i: i }; })
+      .sort(function (a, b) { return (dateKey(b.r.date) - dateKey(a.r.date)) || (a.i - b.i); })
+      .map(function (x) { return x.r; });
+  }
+
   function loadInto(container, limit) {
     loadRaw().then(function (list) {
-      lastItems = normalize(list);
+      lastItems = merge(normalize(list));
       render(container, limit);
     }).catch(function () {
-      note(container, 'rev_error', 'text-red-500 dark:text-red-400');
+      lastItems = merge([]);
+      if (lastItems.length) render(container, limit);
+      else note(container, 'rev_error', 'text-red-500 dark:text-red-400');
     });
   }
 
@@ -205,18 +231,20 @@
 
       busy(true);
       var body = new URLSearchParams();
-      body.append('data[name]', name);
-      body.append('data[rating]', String(rating));
-      body.append('data[text]', text);
-      body.append('data[date]', new Date().toLocaleDateString('bg-BG'));
-      body.append('data[approved]', 'no');
+      var f = APPS_SCRIPT_URL ? function (k) { return k; } : function (k) { return 'data[' + k + ']'; };
+      body.append(f('name'), name);
+      body.append(f('rating'), String(rating));
+      body.append(f('text'), text);
+      if (!APPS_SCRIPT_URL) {
+        body.append(f('date'), new Date().toLocaleDateString('bg-BG'));
+        body.append(f('approved'), 'no');
+      }
 
-      fetchWithTimeout(SHEETDB_URL, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body
-      }, 10000).then(function (r) {
+      fetchWithTimeout(API_URL, { method: 'POST', body: body }, 15000).then(function (r) {
         if (!r.ok) throw new Error('http ' + r.status);
+        return r.json().catch(function () { return {}; });
+      }).then(function (res) {
+        if (res && res.ok === false) throw new Error(res.error || 'rejected');
         log.push(Date.now());
         sSet(LOG_KEY, JSON.stringify(log));
         form.reset();
