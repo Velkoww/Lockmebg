@@ -6,7 +6,7 @@
   var SHEETDB_URL = 'https://sheetdb.io/api/v1/3pzi54zvfbmyc';
   var REVIEWS_FEED_URL = '';
 
-  var CACHE_KEY = 'lm-reviews-cache-v1';
+  var CACHE_KEY = 'lm-reviews-cache-v2';
   var CACHE_TTL = 10 * 60 * 1000;
   var LOG_KEY = 'lm-review-log';
   var MAX_NAME = 40, MAX_TEXT = 500, MIN_TEXT = 10;
@@ -78,12 +78,21 @@
   }
   function writeCache(data) { sSet(CACHE_KEY, JSON.stringify({ t: Date.now(), data: data })); }
 
+  /* ?refresh в адреса (напр. reviews.html?refresh) прескача кеша - за проверка след одобрение */
+  var FORCE_REFRESH = /[?&]refresh\b/.test(location.search);
+
   function loadRaw() {
-    var cached = readCache(false);
+    var cached = FORCE_REFRESH ? null : readCache(false);
     if (cached) return Promise.resolve(cached);
     var feed = !!REVIEWS_FEED_URL;
-    return fetchWithTimeout(feed ? REVIEWS_FEED_URL : SHEETDB_URL, {}, 9000)
-      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return feed ? r.text().then(parseCSV) : r.json(); })
+    return fetchWithTimeout(feed ? REVIEWS_FEED_URL : SHEETDB_URL, { cache: 'no-store', headers: { 'Accept': 'application/json' } }, 9000)
+      .then(function (r) {
+        if (!r.ok) {
+          if (window.console) console.warn('[reviews] SheetDB отговори с HTTP ' + r.status + (r.status === 402 || r.status === 429 ? ' - вероятно е изчерпан месечният лимит на заявки' : ''));
+          throw new Error('http ' + r.status);
+        }
+        return feed ? r.text().then(parseCSV) : r.json();
+      })
       .then(function (list) { if (!Array.isArray(list)) throw new Error('bad data'); writeCache(list); return list; })
       .catch(function (err) {
         var stale = readCache(true);
@@ -98,7 +107,8 @@
     list.forEach(function (r) {
       if (!r || typeof r !== 'object') return;
       if (!feed) {
-        var ap = String(r.approved == null ? '' : r.approved).trim().toLowerCase();
+        var apRaw = r.approved != null ? r.approved : (r.Approved != null ? r.Approved : r.APPROVED);
+        var ap = String(apRaw == null ? '' : apRaw).trim().toLowerCase();
         if (HIDDEN_VALUES.indexOf(ap) !== -1) return;
       }
       var text = clean(r.text, MAX_TEXT);
